@@ -1,29 +1,26 @@
 @import "@/styles/_breakpoints.module";
 
 .layout {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  grid-template-rows: 48px 1fr;
-  grid-template-areas:
-    "header header"
-    "sidebar main";
-  height: 100vh;
+  --sidebar-size: 232px;
+  --panel-size: 60px;
+
+  padding: var(--panel-size) 0 0 var(--sidebar-size);
 
   @media (max-width: $bpTabletPx) {
-    grid-template-columns: 48px 1fr;
+    --sidebar-size: 48px;
+    --panel-size: 48px;
   }
 
   @media (max-width: $bpMobilePx) {
-    grid-template-columns: 1fr;
-    grid-template-rows: 48px 1fr 48px;
-    grid-template-areas:
-      "header"
-      "main"
-      "footer";
+    padding: var(--panel-size) 0;
   }
 
   .sidebar {
-    grid-area: sidebar;
+    position: fixed;
+    top: var(--panel-size);
+    bottom: 0;
+    left: 0;
+    width: var(--sidebar-size);
 
     @media (max-width: $bpMobilePx) {
       display: none;
@@ -31,7 +28,10 @@
   }
 
   .footer {
-    grid-area: footer;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
 
     @media (min-width: $bpMobilePx) {
       display: none;
@@ -40,10 +40,18 @@
 }
 
 .header {
-  grid-area: header;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .main {
   grid-area: main;
   padding: 0 var(--space-base);
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
 }

@@ -12,7 +12,9 @@ export const MainLayout: FC<PropsWithChildren<MainLayoutProps>> = ({
   return (
     <div className={styles.layout}>
       <Header className={styles.header} />
-      <main className={styles.main}>{children}</main>
+      <main className={styles.main}>
+        <div className={styles.content}>{children}</div>
+      </main>
       <Sidebar className={styles.sidebar} />
       <Footer className={styles.footer} />
     </div>

@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-base);
-  height: 48px;
+  height: var(--panel-size, 60px);
   padding: 0 var(--space-base);
 }
 

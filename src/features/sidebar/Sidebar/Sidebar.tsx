@@ -13,7 +13,7 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
 
   return (
     <aside className={cn(styles.sidebar, styles[breakpoint], className)}>
-      {breakpoint}
+      SB
     </aside>
   );
 };

@@ -1,9 +1,27 @@
+html body {
+  overflow-y: overlay;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
+
+  *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: var(--color-border);
+  }
+
+  *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+  }
 }
 
 body {
-  overflow: hidden;
   min-width: 320px;
   height: -webkit-fill-available;
   min-height: 100vh;
@@ -15,4 +33,5 @@ body {
   font-size: var(--font-size-base);
   font-weight: var(--font-medium);
   line-height: 1.15;
+  overscroll-behavior: contain;
 }
