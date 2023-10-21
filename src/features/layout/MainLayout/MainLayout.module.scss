@@ -1,0 +1,49 @@
+@import "@/styles/_breakpoints.module";
+
+.layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 48px 1fr;
+  grid-template-areas:
+    "header header"
+    "sidebar main";
+  height: 100vh;
+
+  @media (max-width: $bpTabletPx) {
+    grid-template-columns: 48px 1fr;
+  }
+
+  @media (max-width: $bpMobilePx) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 48px 1fr 48px;
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+  }
+
+  .sidebar {
+    grid-area: sidebar;
+
+    @media (max-width: $bpMobilePx) {
+      display: none;
+    }
+  }
+
+  .footer {
+    grid-area: footer;
+
+    @media (min-width: $bpMobilePx) {
+      display: none;
+    }
+  }
+}
+
+.header {
+  grid-area: header;
+}
+
+.main {
+  grid-area: main;
+  padding: 0 var(--space-base);
+}

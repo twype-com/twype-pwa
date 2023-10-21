@@ -3,11 +3,16 @@ html {
 }
 
 body {
+  overflow: hidden;
+  min-width: 320px;
+  height: -webkit-fill-available;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
   background: var(--color-background);
   color: var(--color-text-primary);
   font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-medium);
   line-height: 1.15;
-  -webkit-font-smoothing: antialiased;
 }
