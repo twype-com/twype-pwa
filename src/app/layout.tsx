@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Theme } from "@radix-ui/themes";
+import "@radix-ui/themes/styles.css";
 import { MainLayout } from "@/features/layout/MainLayout/MainLayout";
 import "@/styles/main.scss";
 
@@ -15,7 +17,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body>
-        <MainLayout>{children}</MainLayout>
+        <Theme>
+          <MainLayout>{children}</MainLayout>
+        </Theme>
       </body>
     </html>
   );

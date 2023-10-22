@@ -1,0 +1,40 @@
+@import "@/styles/_breakpoints.module";
+
+.actions {
+  position: relative;
+}
+
+.button {
+  position: relative;
+  background: transparent;
+  color: var(--color-text-primary);
+  font-size: var(--font-large);
+
+  &:hover {
+    background: var(--color-background-hover);
+  }
+}
+
+.search {
+  @media (min-width: $bpMobilePx) {
+    display: none;
+  }
+}
+
+.upload {
+  @media (max-width: $bpMobilePx) {
+    display: none;
+  }
+}
+
+.uploadText {
+  @media (max-width: $bpTabletPx) {
+    display: none;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

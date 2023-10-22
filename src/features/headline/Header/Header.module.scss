@@ -23,19 +23,15 @@
   font-size: var(--font-bigger);
 }
 
-.search,
-.actions {
+.search {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width: 400px;
   height: var(--size-control-base);
   background: #eee;
   color: #b1b1b1;
-}
-
-.search {
-  flex: 1;
-  max-width: 400px;
 
   @media (max-width: $bpMobilePx) {
     display: none;
@@ -43,5 +39,5 @@
 }
 
 .actions {
-  flex: 0 0 64px;
+  flex: 0 0 auto;
 }
