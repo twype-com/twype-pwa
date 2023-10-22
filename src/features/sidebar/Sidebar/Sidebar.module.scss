@@ -1,6 +1,10 @@
+@import "@/styles/_breakpoints.module";
+
 .sidebar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #eee;
+  padding: var(--space-large) 0 0;
+
+  @media (max-width: $bpTabletPx) {
+    padding-block-start: var(--space-base);
+    box-shadow: 0 0 0 1px var(--color-border);
+  }
 }

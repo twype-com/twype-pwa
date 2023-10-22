@@ -22,7 +22,7 @@ html {
 }
 
 body {
-  min-width: 320px;
+  min-width: var(--device-min-size);
   height: -webkit-fill-available;
   min-height: 100vh;
   margin: 0;
@@ -34,4 +34,6 @@ body {
   font-weight: var(--font-medium);
   line-height: 1.15;
   overscroll-behavior: contain;
+  overflow-x: hidden;
+  overflow-y: auto;
 }

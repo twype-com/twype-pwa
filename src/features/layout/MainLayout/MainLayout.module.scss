@@ -4,6 +4,7 @@
   --sidebar-size: 232px;
   --panel-size: 60px;
 
+  min-width: var(--device-min-size);
   padding: var(--panel-size) 0 0 var(--sidebar-size);
 
   @media (max-width: $bpTabletPx) {

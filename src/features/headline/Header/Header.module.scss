@@ -1,4 +1,9 @@
+@import "@/styles/_breakpoints.module";
+
 .header {
+  position: relative;
+  z-index: 100;
+  min-width: var(--device-min-size);
   background: var(--color-background);
   box-shadow: 0 0 0 1px var(--color-border);
   color: var(--color-text-primary);
@@ -31,6 +36,10 @@
 .search {
   flex: 1;
   max-width: 400px;
+
+  @media (max-width: $bpMobilePx) {
+    display: none;
+  }
 }
 
 .actions {
