@@ -1,7 +1,6 @@
 "use client";
 import { FC } from "react";
-import cn from "classnames";
-import { Flex, Avatar, Tooltip, IconButton, Button } from "@radix-ui/themes";
+import { Flex, Tooltip, IconButton, Button } from "@radix-ui/themes";
 import {
   Envelope,
   MagnifyingGlass,
@@ -9,6 +8,7 @@ import {
   Plus,
 } from "@phosphor-icons/react";
 import { SupBadge } from "@/components/SupBadge/SupBadge";
+import { HeaderUser } from "../HeaderUser/HeaderUser";
 import styles from "./HeaderActions.module.scss";
 
 type HeaderActionsProps = {
@@ -43,12 +43,7 @@ export const HeaderActions: FC<HeaderActionsProps> = ({ className }) => {
         </IconButton>
       </Tooltip>
 
-      <Avatar
-        size="3"
-        src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
-        fallback="AT"
-        radius="full"
-      />
+      <HeaderUser />
     </Flex>
   );
 };

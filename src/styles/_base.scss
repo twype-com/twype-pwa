@@ -1,23 +1,13 @@
-html body {
-  overflow-y: overlay;
-}
+// html body {
+//   overflow-y: overlay;
+// }
 
 html {
   -webkit-text-size-adjust: 100%;
 
   *::-webkit-scrollbar {
     border-radius: 0;
-    width: 8px;
-  }
-
-  *::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background-color: var(--color-border);
-  }
-
-  *::-webkit-scrollbar-track {
-    border-radius: 0;
-    background-color: rgba(0, 0, 0, 0);
+    width: 0;
   }
 }
 
@@ -34,6 +24,4 @@ body {
   font-weight: var(--font-medium);
   line-height: 1.15;
   overscroll-behavior: contain;
-  overflow-x: hidden;
-  overflow-y: auto;
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Theme } from "@radix-ui/themes";
+import { ScrollArea, Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import { MainLayout } from "@/features/layout/MainLayout/MainLayout";
 import "@/styles/main.scss";
@@ -18,7 +18,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <body>
         <Theme>
-          <MainLayout>{children}</MainLayout>
+          <ScrollArea
+            type="always"
+            scrollbars="vertical"
+            style={{ height: "100vh" }}
+          >
+            <MainLayout>{children}</MainLayout>
+          </ScrollArea>
         </Theme>
       </body>
     </html>
