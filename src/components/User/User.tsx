@@ -24,7 +24,7 @@ export const User: FC<UserProps> = ({
   isVerified,
 }) => {
   const AvatarImg = () => {
-    return <Avatar size="3" src={photoUrl} fallback="AT" radius="full" />;
+    return <Avatar size="2" src={photoUrl} fallback="AT" radius="full" />;
   };
 
   return (
