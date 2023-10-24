@@ -3,15 +3,18 @@ import cn from "classnames";
 import { Avatar } from "@radix-ui/themes";
 import styles from "./User.module.scss";
 
-type UserProps = {
-  className?: string;
-  size?: "small" | "medium" | "large";
+export type Person = {
   nickName: string;
-  fullName: string;
+  fullName?: string;
   photoUrl?: string;
   to?: string;
   isOnline?: boolean;
   isVerified?: boolean;
+  size?: "small" | "medium" | "large";
+};
+
+type UserProps = Person & {
+  className?: string;
 };
 
 export const User: FC<UserProps> = ({
@@ -34,7 +37,7 @@ export const User: FC<UserProps> = ({
       </div>
       <div className={styles.info}>
         <div className={styles.nickName}>{nickName}</div>
-        <div className={styles.fullName}>{fullName}</div>
+        {fullName && <div className={styles.fullName}>{fullName}</div>}
       </div>
     </div>
   );
