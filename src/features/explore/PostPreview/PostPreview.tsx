@@ -2,8 +2,9 @@
 import { FC } from "react";
 import { AspectRatio } from "@radix-ui/themes";
 import { Person, User } from "@/components/User/User";
-import styles from "./PostPreview.module.scss";
+import { PlayStat } from "@/components/PlayStat/PlayStat";
 import { Like } from "@/components/Like/Like";
+import styles from "./PostPreview.module.scss";
 
 type PostPreviewProps = {
   title: string;
@@ -15,7 +16,9 @@ export const PostPreview: FC<PostPreviewProps> = ({ title, tags, user }) => {
   return (
     <article className={styles.post}>
       <AspectRatio ratio={8 / 10.5} className={styles.media}>
-        Media
+        <div className={styles.stat}>
+          <PlayStat count={23498} />
+        </div>
       </AspectRatio>
       <footer className={styles.footer}>
         <div className={styles.info}>

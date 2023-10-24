@@ -7,13 +7,21 @@
 
 .media {
   border-radius: 8px;
-  background: var(--color-background-hover);
+  background: var(--color-background-alt);
+  color: var(--color-text-alt);
+}
+
+.stat {
+  position: absolute;
+  inset: auto var(--space-base) var(--space-base);
+  line-height: 1;
 }
 
 .footer {
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-areas: "info info" "user likes";
+  align-items: center;
   gap: var(--space-base);
   margin: var(--space-tiny) 0 0;
 }
@@ -28,6 +36,7 @@
 
 .likes {
   grid-area: likes;
+  color: var(--color-text-secondary);
 }
 
 .title {

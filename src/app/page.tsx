@@ -31,7 +31,7 @@ export default function Home() {
             "redis",
             "webpack",
           ]}
-          user={{ nickName: "nickName" }}
+          user={{ nickName: "nickName", photoUrl: "https://picsum.photos/60" }}
         />
       ))}
     </Feed>
