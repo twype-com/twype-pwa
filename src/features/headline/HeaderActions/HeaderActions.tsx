@@ -18,6 +18,10 @@ type HeaderActionsProps = {
 export const HeaderActions: FC<HeaderActionsProps> = ({ className }) => {
   return (
     <Flex gap="2" align="center">
+      <Button variant="outline" color="gray" className={styles.upload}>
+        <Plus weight="bold" /> <span className={styles.uploadText}>Upload</span>
+      </Button>
+
       <div className={styles.search}>
         <Tooltip content="Messages">
           <IconButton size="3" radius="full" className={styles.button}>
@@ -25,10 +29,6 @@ export const HeaderActions: FC<HeaderActionsProps> = ({ className }) => {
           </IconButton>
         </Tooltip>
       </div>
-
-      <Button variant="outline" color="gray" className={styles.upload}>
-        <Plus weight="bold" /> <span className={styles.uploadText}>Upload</span>
-      </Button>
 
       <Tooltip content="Messages">
         <IconButton size="3" radius="full" className={styles.button}>

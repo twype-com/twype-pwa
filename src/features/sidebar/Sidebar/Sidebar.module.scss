@@ -1,10 +1,13 @@
-@import "@/styles/_breakpoints.module";
+@import "@/styles/_mixins.module";
 
 .sidebar {
-  padding: var(--space-large) 0 0;
+  padding: var(--space-base) 0 0;
 
-  @media (max-width: $bpTabletPx) {
-    padding-block-start: var(--space-base);
+  @include device(mobile) {
     box-shadow: 0 0 0 1px var(--color-border);
+  }
+
+  @include device(notMobile) {
+    padding-block-start: var(--space-large);
   }
 }

@@ -1,4 +1,4 @@
-@import "@/styles/_breakpoints.module";
+@import "@/styles/_mixins.module";
 
 .header {
   position: relative;
@@ -33,7 +33,7 @@
   background: #eee;
   color: #b1b1b1;
 
-  @media (max-width: $bpMobilePx) {
+  @include device(mobile) {
     display: none;
   }
 }

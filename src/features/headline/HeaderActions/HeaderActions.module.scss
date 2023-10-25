@@ -1,4 +1,4 @@
-@import "@/styles/_breakpoints.module";
+@import "@/styles/_mixins.module";
 
 .actions {
   position: relative;
@@ -16,20 +16,22 @@
 }
 
 .search {
-  @media (min-width: $bpMobilePx) {
-    display: none;
+  display: none;
+  @include device(mobile) {
+    display: block;
   }
 }
 
 .upload {
-  @media (max-width: $bpMobilePx) {
+  @include device(miniMobile) {
     display: none;
   }
 }
 
 .uploadText {
-  @media (max-width: $bpTabletPx) {
-    display: none;
+  display: none;
+  @include device(notMobile) {
+    display: block;
   }
 }
 

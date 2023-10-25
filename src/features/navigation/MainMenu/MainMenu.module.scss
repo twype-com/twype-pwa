@@ -1,4 +1,4 @@
-@import "@/styles/_breakpoints.module";
+@import "@/styles/_mixins.module";
 
 .menu {
   position: relative;
@@ -65,7 +65,7 @@
 }
 
 .text {
-  @media (max-width: $bpTabletPx) {
+  @include device(mobile) {
     display: none;
   }
 

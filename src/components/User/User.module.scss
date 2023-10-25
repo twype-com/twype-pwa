@@ -1,4 +1,4 @@
-@import "@/styles/_breakpoints.module";
+@import "@/styles/_mixins.module";
 
 .user {
   flex: 0 0 auto;
@@ -16,7 +16,7 @@
   flex: 1;
   line-height: 1;
 
-  @media (max-width: $bpTabletPx) {
+  @include device(mobile) {
     display: none;
   }
 }

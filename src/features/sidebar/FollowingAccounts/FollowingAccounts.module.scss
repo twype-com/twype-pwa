@@ -1,11 +1,11 @@
-@import "@/styles/_breakpoints.module";
+@import "@/styles/_mixins.module";
 
 .following {
   margin: var(--space-big) 0 0;
   padding: var(--space-big) var(--space-base);
   border-block-start: 1px solid var(--color-border);
 
-  @media (max-width: $bpTabletPx) {
+  @include device(mobile) {
     padding-inline: 0;
   }
 }
@@ -17,7 +17,7 @@
   font-size: var(--font-small);
   font-weight: var(--font-medium);
 
-  @media (max-width: $bpTabletPx) {
+  @include device(mobile) {
     display: none;
   }
 }
@@ -32,12 +32,12 @@
   &:not(:first-child) {
     margin-block-start: var(--space-base);
 
-    @media (max-width: $bpTabletPx) {
+    @include device(mobile) {
       margin-block-start: var(--space-small);
     }
   }
 
-  @media (max-width: $bpTabletPx) {
+  @include device(mobile) {
     display: flex;
     justify-content: center;
   }

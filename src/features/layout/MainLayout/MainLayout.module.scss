@@ -1,19 +1,22 @@
-@import "@/styles/_breakpoints.module";
+@import "@/styles/_mixins.module";
 
 .layout {
-  --sidebar-size: 232px;
-  --panel-size: 60px;
+  --sidebar-size: 48px;
+  --panel-size: 48px;
 
   min-width: var(--device-min-size);
-  padding: var(--panel-size) 0 0 var(--sidebar-size);
+  padding: var(--panel-size) 0 var(--panel-size) var(--panel-size);
 
-  @media (max-width: $bpTabletPx) {
-    --sidebar-size: 48px;
-    --panel-size: 48px;
+  @include device(notMobile) {
+    --sidebar-size: 232px;
+    --panel-size: 60px;
+
+    padding-inline-start: var(--sidebar-size);
+    padding-block-end: 0;
   }
 
-  @media (max-width: $bpMobilePx) {
-    padding: var(--panel-size) 0;
+  @include device(miniMobile) {
+    padding-inline-start: 0;
   }
 
   .sidebar {
@@ -23,7 +26,7 @@
     left: 0;
     width: var(--sidebar-size);
 
-    @media (max-width: $bpMobilePx) {
+    @include device(miniMobile) {
       display: none;
     }
   }
@@ -34,7 +37,7 @@
     left: 0;
     right: 0;
 
-    @media (min-width: $bpMobilePx) {
+    @include device(notMiniMobile) {
       display: none;
     }
   }
