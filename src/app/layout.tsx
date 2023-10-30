@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ScrollArea, Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import { MainLayout } from "@/features/layout/MainLayout/MainLayout";
+import { Providers } from "./providers";
 import "@/styles/main.scss";
 
 export const metadata: Metadata = {
@@ -23,7 +24,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
             scrollbars="vertical"
             style={{ height: "100vh" }}
           >
-            <MainLayout>{children}</MainLayout>
+            <MainLayout>
+              <Providers>{children}</Providers>
+            </MainLayout>
           </ScrollArea>
         </Theme>
       </body>
