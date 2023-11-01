@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Room } from "livekit-server-sdk";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@radix-ui/themes";
+import { Article } from "@/components/Article/Article";
 
 export default function RoomsListPage() {
   const {
@@ -17,8 +18,11 @@ export default function RoomsListPage() {
   });
 
   return (
-    <div>
-      <h1>Rooms page</h1>
+    <Article
+      title="Rooms page"
+      buttonUrl="/rooms/create"
+      buttonText="Create new room"
+    >
       {isListLoading && <div>Loading...</div>}
       {roomsError ? (
         <div>Something went wrong :(</div>
@@ -33,11 +37,6 @@ export default function RoomsListPage() {
       ) : (
         !isListLoading && <p>No rooms found</p>
       )}
-      <p>
-        <Link href="/rooms/create">
-          <Button>Create new room</Button>
-        </Link>
-      </p>
-    </div>
+    </Article>
   );
 }

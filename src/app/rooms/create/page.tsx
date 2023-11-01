@@ -4,19 +4,18 @@ import { useState } from "react";
 import { NewRoom } from "@/features/rooms/types";
 import { CreateRoomForm } from "@/features/rooms/CreateRoomForm/CreateRoomForm";
 import { CreateRoomSender } from "@/features/rooms/CreateRoomSender/CreateRoomSender";
+import { Article } from "@/components/Article/Article";
 
 export default function Home() {
   const [newRoom, setNewRoom] = useState<NewRoom | null>(null);
 
   return (
-    <div>
-      <h1>Create new room</h1>
-
+    <Article title="Create new room" backUrl="/rooms">
       {!newRoom ? (
         <CreateRoomForm onCreate={(room) => setNewRoom(room)} />
       ) : (
         <CreateRoomSender newRoom={newRoom} />
       )}
-    </div>
+    </Article>
   );
 }
