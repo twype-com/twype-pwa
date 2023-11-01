@@ -1,7 +1,8 @@
 "use client";
 import { FC } from "react";
-import { useQuery } from "@tanstack/react-query";
 import cn from "classnames";
+import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
 import { NewRoom } from "../types";
 
 type CreateRoomFormProps = {
@@ -26,7 +27,19 @@ export const CreateRoomSender: FC<CreateRoomFormProps> = ({
       {isLoading ? (
         <div>Creating...</div>
       ) : (
-        <div>{error ? <p>Something went wrong :(</p> : <p>{data.name}</p>}</div>
+        <div>
+          {error ? (
+            <p>Something went wrong :(</p>
+          ) : (
+            <p>
+              Room{" "}
+              <Link href={`/rooms/${data.name}`}>
+                <b>{data.name}</b>
+              </Link>{" "}
+              is created!
+            </p>
+          )}
+        </div>
       )}
     </div>
   );

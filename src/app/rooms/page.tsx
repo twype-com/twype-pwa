@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { Room } from "livekit-server-sdk";
 import { useQuery } from "@tanstack/react-query";
-import { Button } from "@radix-ui/themes";
 import { Article } from "@/components/Article/Article";
 
 export default function RoomsListPage() {
@@ -30,7 +29,7 @@ export default function RoomsListPage() {
         <ul>
           {rooms.map((room: Room) => (
             <li key={room.sid}>
-              <Link href={`/rooms/${room.sid}`}>{room.name}</Link>
+              <Link href={`/rooms/${room.name}`}>{room.name}</Link>
             </li>
           ))}
         </ul>

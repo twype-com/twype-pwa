@@ -15,8 +15,8 @@ import { Track } from "livekit-client";
 
 export default function LiveKitPage() {
   // TODO: get user input for room and name
-  const room = "quickstart-room";
-  const name = "quickstart-user";
+  const room = "twype-room";
+  const name = "demo-user";
   const [token, setToken] = useState("");
 
   useEffect(() => {
@@ -39,8 +39,8 @@ export default function LiveKitPage() {
 
   return (
     <LiveKitRoom
-      video={true}
-      audio={true}
+      video={false}
+      audio={false}
       token={token}
       connectOptions={{ autoSubscribe: false }}
       serverUrl={process.env.NEXT_PUBLIC_LIVEKIT_URL}

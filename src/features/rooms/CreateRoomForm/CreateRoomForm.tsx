@@ -49,9 +49,9 @@ export const CreateRoomForm: FC<CreateRoomFormProps> = ({
 
         <br />
 
-        <Form.Field name="Room timeout">
+        <Form.Field name="Room timeout (seconds)">
           <div>
-            <Form.Label>Room timeout</Form.Label>
+            <Form.Label>Room timeout (seconds)</Form.Label>
           </div>
           <Form.Control asChild>
             <input

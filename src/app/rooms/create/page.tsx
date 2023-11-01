@@ -6,7 +6,7 @@ import { CreateRoomForm } from "@/features/rooms/CreateRoomForm/CreateRoomForm";
 import { CreateRoomSender } from "@/features/rooms/CreateRoomSender/CreateRoomSender";
 import { Article } from "@/components/Article/Article";
 
-export default function Home() {
+export default function CreateRoomPage() {
   const [newRoom, setNewRoom] = useState<NewRoom | null>(null);
 
   return (
