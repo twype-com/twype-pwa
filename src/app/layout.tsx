@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ScrollArea, Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import { MainLayout } from "@/features/layout/MainLayout/MainLayout";
-import { Providers } from "./providers";
+import { Providers } from "@/app/providers";
 import "@/styles/main.scss";
 
 export const metadata: Metadata = {
