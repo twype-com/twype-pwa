@@ -1,10 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { Article } from "@/components/Article/Article";
-import { Room } from "livekit-client";
-import { environments } from "@/app/livekit/api/constants";
+import Link from "next/link";
 import { useParams } from "next/navigation";
+import { Room } from "livekit-client";
+import { Article } from "@/components/Article/Article";
+import { environments } from "@/app/livekit/api/constants";
 import { RoomConnector } from "@/features/rooms/RoomConnector/RoomConnector";
 
 export default function RoomPage() {
@@ -47,6 +48,7 @@ export default function RoomPage() {
   return (
     <Article title={`Room ${roomName}`} backUrl="/rooms">
       <div>Room online: {roomOnline?.name}</div>
+      <Link href={`./${roomOnline?.name}/call`}>Call</Link>
       {roomOnline && <RoomConnector room={roomOnline} />}
     </Article>
   );

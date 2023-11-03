@@ -1,0 +1,22 @@
+.control {
+  --control-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-size);
+  height: var(--control-size);
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(#fff, 0.3);
+  color: var(--color-alt);
+  font-size: calc(var(--control-size) / 1.5);
+  cursor: pointer;
+  outline: none;
+}
+
+.red {
+  background: var(--color-danger);
+  color: var(--color-alt);
+}

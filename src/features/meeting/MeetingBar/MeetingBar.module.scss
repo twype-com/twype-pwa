@@ -1,0 +1,29 @@
+.bar {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  padding: var(--space-small) var(--space-base);
+  transform: translateY(-100%);
+  transition: transform 0.2s ease-in-out;
+  will-change: transform;
+}
+
+.visible {
+  transform: translateY(0);
+}
+
+.author {
+  flex: 0 0 auto;
+}
+
+.controls {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-base);
+}

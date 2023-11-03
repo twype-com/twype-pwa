@@ -1,14 +1,14 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { Article } from "@/components/Article/Article";
 import { Room } from "livekit-client";
-import { environments } from "@/app/livekit/api/constants";
 import { useParams } from "next/navigation";
-import { RoomOnline } from "@/features/rooms/RoomOnline/RoomOnline";
 import { LiveKitRoom, RoomAudioRenderer } from "@livekit/components-react";
+import { RoomOnline } from "@/features/rooms/RoomOnline/RoomOnline";
+import { Article } from "@/components/Article/Article";
+import { environments } from "@/app/livekit/api/constants";
 
-export default function RoomPage() {
+export default function RoomOnlinePage() {
   const { room: roomName } = useParams();
   const userName = "twype-user";
   const [token, setToken] = useState("");
