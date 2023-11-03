@@ -12,6 +12,7 @@ export const MeetingLayout: FC<MeetingLayoutProps> = ({ onClose }) => {
   const [isBarVisible, setIsBarVisible] = useState(true);
   const [isMicOn, setIsMicOn] = useState(true);
   const [isCameraOn, setIsCameraOn] = useState(true);
+  const [isSubscribed, setIsSubscribed] = useState(false);
 
   const handleMic = useCallback((micState: boolean) => {
     setIsMicOn(!micState);
@@ -21,6 +22,10 @@ export const MeetingLayout: FC<MeetingLayoutProps> = ({ onClose }) => {
     setIsCameraOn(!camState);
   }, []);
 
+  const handleSubscribe = useCallback(() => {
+    setIsSubscribed(!isSubscribed);
+  }, [isSubscribed]);
+
   return (
     <div className={styles.meeting}>
       <MeetingVideoGrid onClick={() => setIsBarVisible(!isBarVisible)} />
@@ -28,8 +33,10 @@ export const MeetingLayout: FC<MeetingLayoutProps> = ({ onClose }) => {
         isVisible={isBarVisible}
         isMicOn={isMicOn}
         isCameraOn={isCameraOn}
+        isSubscribed={isSubscribed}
         toggleMic={handleMic}
         toggleCamera={handleCam}
+        onSubscribe={handleSubscribe}
         onClose={onClose}
       />
     </div>
