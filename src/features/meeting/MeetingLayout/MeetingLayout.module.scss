@@ -5,3 +5,9 @@
   background: var(--color-background-alt);
   color: var(--color-text-alt);
 }
+
+.content {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline: 0;
+}

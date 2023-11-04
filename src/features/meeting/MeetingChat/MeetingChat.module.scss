@@ -1,10 +1,8 @@
 .chat {
-  position: absolute;
-  inset-block-end: 0;
-  inset-inline: 16px;
+  overflow: hidden;
+  position: relative;
   height: calc(100vh - 120px);
   max-height: 300px;
-  overflow: hidden;
   mask-image: linear-gradient(
     180deg,
     transparent,
@@ -19,7 +17,7 @@
   inset-block-end: 0;
   inset-inline: 0;
   margin: 0;
-  padding: 0;
+  padding: 0 var(--space-small);
   list-style: none;
 }
 

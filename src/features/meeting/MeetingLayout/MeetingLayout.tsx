@@ -3,6 +3,7 @@ import { FC, useCallback, useState } from "react";
 import { MeetingVideoGrid } from "@/features/meeting/MeetingVideoGrid/MeetingVideoGrid";
 import { MeetingBar } from "@/features/meeting/MeetingBar/MeetingBar";
 import { MeetingChat } from "@/features/meeting/MeetingChat/MeetingChat";
+import { MeetingActions } from "../MeetingActions/MeetingActions";
 import { MessageItem } from "@/features/chat/types";
 import styles from "./MeetingLayout.module.scss";
 
@@ -48,7 +49,10 @@ export const MeetingLayout: FC<MeetingLayoutProps> = ({
         onSubscribe={handleSubscribe}
         onClose={onClose}
       />
-      <MeetingChat messages={messages} />
+      <div className={styles.content}>
+        <MeetingChat messages={messages} />
+        <MeetingActions commentsCounter={messages.length} />
+      </div>
     </div>
   );
 };
