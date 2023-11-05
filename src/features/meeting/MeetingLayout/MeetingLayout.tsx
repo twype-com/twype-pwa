@@ -5,7 +5,6 @@ import { MeetingBar } from "@/features/meeting/MeetingBar/MeetingBar";
 import { MeetingChat } from "@/features/meeting/MeetingChat/MeetingChat";
 import { MeetingActions } from "../MeetingActions/MeetingActions";
 import { MessageItem } from "@/features/chat/types";
-import { MeetingLikes } from "../MeetingLikes/MeetingLikes";
 import styles from "./MeetingLayout.module.scss";
 
 type MeetingLayoutProps = {
