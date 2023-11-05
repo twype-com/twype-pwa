@@ -42,6 +42,11 @@ export default function RoomCallPage() {
   }, [router]);
 
   return (
-    <MeetingLayout messages={messagesList} likes={385} onClose={handleClose} />
+    <MeetingLayout
+      messages={messagesList}
+      followers={385}
+      likes={42}
+      onClose={handleClose}
+    />
   );
 }

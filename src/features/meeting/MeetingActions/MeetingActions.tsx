@@ -6,10 +6,12 @@ import styles from "./MeetingActions.module.scss";
 
 type MeetingActionsProps = {
   commentsCounter?: number;
+  likes?: number;
 };
 
 export const MeetingActions: FC<MeetingActionsProps> = ({
   commentsCounter = 0,
+  likes = 0,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [isLike, setIsLike] = useState(false);
@@ -52,7 +54,7 @@ export const MeetingActions: FC<MeetingActionsProps> = ({
         />
         <MeetingControl
           text="Like"
-          label="73"
+          label={likes?.toString()}
           icon={isLike ? "heartFill" : "heart"}
           type="compact"
           className={cn({ [styles.liked]: isLike })}

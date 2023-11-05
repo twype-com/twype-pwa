@@ -10,7 +10,7 @@ type MeetingBarProps = {
   isMicOn?: boolean;
   isCameraOn?: boolean;
   isSubscribed?: boolean;
-  likes?: number;
+  followers?: number;
   toggleMic: (muteState: boolean) => void;
   toggleCamera: (muteState: boolean) => void;
   onSubscribe?: () => void;
@@ -22,7 +22,7 @@ export const MeetingBar: FC<MeetingBarProps> = ({
   isMicOn,
   isCameraOn,
   isSubscribed,
-  likes,
+  followers,
   toggleMic,
   toggleCamera,
   onSubscribe,
@@ -35,7 +35,7 @@ export const MeetingBar: FC<MeetingBarProps> = ({
           name="ChuckNorris"
           photoUrl="/images/avatar.png"
           isSubscribed={isSubscribed}
-          likes={likes}
+          followers={followers}
           onSubscribe={onSubscribe}
         />
       </div>

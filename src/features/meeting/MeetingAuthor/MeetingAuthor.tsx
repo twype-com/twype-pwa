@@ -7,7 +7,7 @@ import styles from "./MeetingAuthor.module.scss";
 type MeetingAuthorProps = {
   name: string;
   photoUrl?: string;
-  likes?: number;
+  followers?: number;
   isSubscribed?: boolean;
   onSubscribe?: () => void;
 };
@@ -15,7 +15,7 @@ type MeetingAuthorProps = {
 export const MeetingAuthor: FC<MeetingAuthorProps> = ({
   name,
   photoUrl,
-  likes = 0,
+  followers = 0,
   isSubscribed,
   onSubscribe,
 }) => {
@@ -24,7 +24,7 @@ export const MeetingAuthor: FC<MeetingAuthorProps> = ({
       <Avatar size="2" src={photoUrl} fallback="AT" radius="full" />
       <div className={styles.user}>
         <div className={styles.name}>{name}</div>
-        <div className={styles.info}>{likes} likes</div>
+        <div className={styles.info}>{followers} followers</div>
       </div>
       <div className={styles.action}>
         <Button color="red" radius="full" size="1" onClick={onSubscribe}>

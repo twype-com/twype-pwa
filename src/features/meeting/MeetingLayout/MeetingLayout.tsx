@@ -5,16 +5,19 @@ import { MeetingBar } from "@/features/meeting/MeetingBar/MeetingBar";
 import { MeetingChat } from "@/features/meeting/MeetingChat/MeetingChat";
 import { MeetingActions } from "../MeetingActions/MeetingActions";
 import { MessageItem } from "@/features/chat/types";
+import { MeetingLikes } from "../MeetingLikes/MeetingLikes";
 import styles from "./MeetingLayout.module.scss";
 
 type MeetingLayoutProps = {
   messages: MessageItem[];
+  followers?: number;
   likes?: number;
   onClose: () => void;
 };
 
 export const MeetingLayout: FC<MeetingLayoutProps> = ({
   messages,
+  followers,
   likes,
   onClose,
 }) => {
@@ -43,7 +46,7 @@ export const MeetingLayout: FC<MeetingLayoutProps> = ({
         isMicOn={isMicOn}
         isCameraOn={isCameraOn}
         isSubscribed={isSubscribed}
-        likes={likes}
+        followers={followers}
         toggleMic={handleMic}
         toggleCamera={handleCam}
         onSubscribe={handleSubscribe}
@@ -51,7 +54,7 @@ export const MeetingLayout: FC<MeetingLayoutProps> = ({
       />
       <div className={styles.content}>
         <MeetingChat messages={messages} />
-        <MeetingActions commentsCounter={messages.length} />
+        <MeetingActions commentsCounter={messages.length} likes={likes} />
       </div>
     </div>
   );
