@@ -5,9 +5,11 @@ import { MeetingBar } from "@/features/meeting/MeetingBar/MeetingBar";
 import { MeetingChat } from "@/features/meeting/MeetingChat/MeetingChat";
 import { MeetingActions } from "../MeetingActions/MeetingActions";
 import { MessageItem } from "@/features/chat/types";
+import { Person } from "@/components/User/User";
 import styles from "./MeetingLayout.module.scss";
 
 type MeetingLayoutProps = {
+  participants: Person[];
   messages: MessageItem[];
   followers?: number;
   likes?: number;
@@ -15,6 +17,7 @@ type MeetingLayoutProps = {
 };
 
 export const MeetingLayout: FC<MeetingLayoutProps> = ({
+  participants,
   messages,
   followers,
   likes,
@@ -40,7 +43,10 @@ export const MeetingLayout: FC<MeetingLayoutProps> = ({
 
   return (
     <div className={styles.meeting}>
-      <MeetingVideoGrid onClick={() => setIsBarVisible(!isBarVisible)} />
+      <MeetingVideoGrid
+        participants={participants}
+        onClick={() => setIsBarVisible(!isBarVisible)}
+      />
       <MeetingBar
         isVisible={isBarVisible}
         isMicOn={isMicOn}

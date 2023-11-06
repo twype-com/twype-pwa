@@ -1,12 +1,17 @@
 "use client";
-import { useCallback, useEffect, useReducer, useState } from "react";
+import { useCallback, useEffect, useMemo, useReducer, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { useEffectOnce } from "react-use";
+import { useEffectOnce, useKeyPress } from "react-use";
 import { MeetingLayout } from "@/features/meeting/MeetingLayout/MeetingLayout";
 import { MessageItem } from "@/features/chat/types";
+import { Person } from "@/components/User/User";
 import chat from "@/mocks/chat.json";
+import participantsOnline from "@/mocks/participants.json";
 
 const chatList = chat as MessageItem[];
+const participantsList = participantsOnline as Person[];
+
+const KEYS = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 export default function RoomCallPage() {
   const { room: roomName } = useParams();
@@ -15,6 +20,22 @@ export default function RoomCallPage() {
   const [messagesList, setMessagesList] = useState<MessageItem[]>([]);
 
   const [increment, dispatch] = useReducer((num: number) => num + 1, 0);
+
+  // @TODO: Remove this demo of participants
+  const [participantsNum, setParticipantsNum] = useState<number>(1);
+  const selectGrid = useCallback((event: KeyboardEvent) => {
+    if (KEYS.includes(event.key)) {
+      setParticipantsNum(Number(event.key));
+    }
+  }, []);
+  // @ts-ignore
+  useKeyPress(selectGrid);
+  const participants = useMemo((): Person[] => {
+    const result = [...participantsList];
+    result.length = participantsNum;
+    return result;
+  }, [participantsNum]);
+  // end todo
 
   const timer = () => {
     if (increment > 120) return;
@@ -43,6 +64,7 @@ export default function RoomCallPage() {
 
   return (
     <MeetingLayout
+      participants={participants}
       messages={messagesList}
       followers={385}
       likes={42}
