@@ -7,7 +7,9 @@
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   position: absolute;
-  inset-block-end: 0;
-  inset-inline: 0;
+  inset: 0;
 }

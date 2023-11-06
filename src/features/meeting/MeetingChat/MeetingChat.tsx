@@ -1,15 +1,22 @@
 "use client";
 import { FC, useCallback, useEffect, useState } from "react";
 import cn from "classnames";
+import { X } from "@phosphor-icons/react";
+import { Avatar, IconButton } from "@radix-ui/themes";
 import { MessageItem } from "@/features/chat/types";
 import styles from "./MeetingChat.module.scss";
-import { Avatar } from "@radix-ui/themes";
 
 type MeetingChatProps = {
   messages: MessageItem[];
+  isOpen?: boolean;
+  onClose: () => void;
 };
 
-export const MeetingChat: FC<MeetingChatProps> = ({ messages }) => {
+export const MeetingChat: FC<MeetingChatProps> = ({
+  messages,
+  isOpen,
+  onClose,
+}) => {
   const [chatMessages, setChatMessages] = useState<MessageItem[]>([]);
   const [newMessagesIds, setNewMessagesIds] = useState<number[]>([]);
 
@@ -31,7 +38,7 @@ export const MeetingChat: FC<MeetingChatProps> = ({ messages }) => {
   }, [messages, updateMessages]);
 
   return (
-    <div className={styles.chat}>
+    <div className={cn(styles.chat, { [styles.open]: isOpen })}>
       <ul className={styles.list}>
         {chatMessages.map((message, index) => (
           <li
@@ -56,6 +63,15 @@ export const MeetingChat: FC<MeetingChatProps> = ({ messages }) => {
           </li>
         ))}
       </ul>
+      <IconButton
+        className={styles.close}
+        size="3"
+        variant="soft"
+        radius="full"
+        onClick={() => onClose()}
+      >
+        <X width="24" height="24" />
+      </IconButton>
     </div>
   );
 };

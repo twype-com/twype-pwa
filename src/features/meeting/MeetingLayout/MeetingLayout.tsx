@@ -24,6 +24,7 @@ export const MeetingLayout: FC<MeetingLayoutProps> = ({
   const [isMicOn, setIsMicOn] = useState(true);
   const [isCameraOn, setIsCameraOn] = useState(true);
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   const handleMic = useCallback((micState: boolean) => {
     setIsMicOn(!micState);
@@ -52,8 +53,17 @@ export const MeetingLayout: FC<MeetingLayoutProps> = ({
         onClose={onClose}
       />
       <div className={styles.content}>
-        <MeetingChat messages={messages} />
-        <MeetingActions commentsCounter={messages.length} likes={likes} />
+        <MeetingChat
+          messages={messages}
+          isOpen={isChatOpen}
+          onClose={() => setIsChatOpen(false)}
+        />
+        <MeetingActions
+          commentsCounter={messages.length}
+          likes={likes}
+          isChatOpen={isChatOpen}
+          onToggleChat={() => setIsChatOpen(!isChatOpen)}
+        />
       </div>
     </div>
   );

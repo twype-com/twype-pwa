@@ -7,17 +7,27 @@ import styles from "./MeetingActions.module.scss";
 type MeetingActionsProps = {
   commentsCounter?: number;
   likes?: number;
+  isChatOpen?: boolean;
+  onToggleChat: () => void;
 };
 
 export const MeetingActions: FC<MeetingActionsProps> = ({
   commentsCounter = 0,
   likes = 0,
+  isChatOpen,
+  onToggleChat,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [isLike, setIsLike] = useState(false);
 
   return (
-    <div className={cn(styles.actions, { [styles.focused]: isFocused })}>
+    <div
+      className={cn(
+        styles.actions,
+        { [styles.focused]: isFocused || isChatOpen },
+        { [styles.inFrame]: isChatOpen }
+      )}
+    >
       <div className={styles.comments}>
         <MeetingControl
           className={styles.allComments}
@@ -25,7 +35,7 @@ export const MeetingActions: FC<MeetingActionsProps> = ({
           label={`${commentsCounter}`}
           icon="chatText"
           type="compact"
-          onClick={() => {}}
+          onClick={() => onToggleChat()}
         />
         <div className={styles.newComment}>
           <textarea

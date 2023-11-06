@@ -7,6 +7,15 @@
   padding: var(--space-small);
 }
 
+.inFrame {
+  position: absolute;
+  z-index: 45;
+  inset-block-end: 0;
+  inset-inline: 0;
+  border-block-start: 1px solid var(--color-border);
+  background: var(--color-text-alt);
+}
+
 .comments {
   flex: 1;
   display: flex;
