@@ -13,8 +13,8 @@
   @include device(desktop) {
     position: relative;
     inset: unset;
-    height: calc(100vh - var(--panel-size));
-    max-height: 800px;
+    height: 800px;
+    max-height: calc(100vh - var(--panel-size));
   }
 }
 
