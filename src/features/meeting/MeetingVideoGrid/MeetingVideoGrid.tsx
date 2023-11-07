@@ -33,10 +33,10 @@ export const MeetingVideoGrid: FC<MeetingVideoGridProps> = ({
             {/* <div className={styles.avatar}>
               <img src={person.photoUrl} alt={person.nickName} />
             </div> */}
-            <div className={styles.info}>
+            {/* <div className={styles.info}>
               <div className={styles.nickName}>{person.nickName}</div>
               <div className={styles.fullName}>{person.fullName}</div>
-            </div>
+            </div> */}
           </div>
         ))}
       </div>

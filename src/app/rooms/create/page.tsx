@@ -1,21 +1,11 @@
-"use client";
+import { Metadata } from "next";
+import { RoomCreateLoader } from "@/features/rooms/RoomCreateLoader/RoomCreateLoader";
 
-import { useState } from "react";
-import { NewRoom } from "@/features/rooms/types";
-import { CreateRoomForm } from "@/features/rooms/CreateRoomForm/CreateRoomForm";
-import { CreateRoomSender } from "@/features/rooms/CreateRoomSender/CreateRoomSender";
-import { Article } from "@/components/Article/Article";
+export const metadata: Metadata = {
+  title: "Create room in Twype",
+  description: "...Description",
+};
 
 export default function CreateRoomPage() {
-  const [newRoom, setNewRoom] = useState<NewRoom | null>(null);
-
-  return (
-    <Article title="Create new room" backUrl="/rooms">
-      {!newRoom ? (
-        <CreateRoomForm onCreate={(room) => setNewRoom(room)} />
-      ) : (
-        <CreateRoomSender newRoom={newRoom} />
-      )}
-    </Article>
-  );
+  return <RoomCreateLoader />;
 }

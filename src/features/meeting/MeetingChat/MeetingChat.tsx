@@ -63,15 +63,17 @@ export const MeetingChat: FC<MeetingChatProps> = ({
           </li>
         ))}
       </ul>
-      <IconButton
-        className={styles.close}
-        size="3"
-        variant="soft"
-        radius="full"
-        onClick={() => onClose()}
-      >
-        <X width="24" height="24" />
-      </IconButton>
+      {isOpen && (
+        <IconButton
+          className={styles.close}
+          size="3"
+          variant="soft"
+          radius="full"
+          onClick={() => onClose()}
+        >
+          <X width="24" height="24" />
+        </IconButton>
+      )}
     </div>
   );
 };
