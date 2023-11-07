@@ -3,7 +3,8 @@ import { FC, useCallback, useState } from "react";
 import { MeetingVideoGrid } from "@/features/meeting/MeetingVideoGrid/MeetingVideoGrid";
 import { MeetingBar } from "@/features/meeting/MeetingBar/MeetingBar";
 import { MeetingChat } from "@/features/meeting/MeetingChat/MeetingChat";
-import { MeetingActions } from "../MeetingActions/MeetingActions";
+import { MeetingParticipants } from "@/features/meeting/MeetingParticipants/MeetingParticipants";
+import { MeetingActions } from "@/features/meeting/MeetingActions/MeetingActions";
 import { MessageItem } from "@/features/chat/types";
 import { Person } from "@/components/User/User";
 import styles from "./MeetingLayout.module.scss";
@@ -62,8 +63,12 @@ export const MeetingLayout: FC<MeetingLayoutProps> = ({
         <MeetingChat
           messages={messages}
           isOpen={isChatOpen}
+          hasParticipants={participants.length > 1}
           onClose={() => setIsChatOpen(false)}
         />
+        {participants.length > 1 && (
+          <MeetingParticipants participants={participants} />
+        )}
         <MeetingActions
           commentsCounter={messages.length}
           likes={likes}

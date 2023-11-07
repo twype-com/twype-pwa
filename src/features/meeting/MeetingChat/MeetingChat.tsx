@@ -8,12 +8,14 @@ import styles from "./MeetingChat.module.scss";
 
 type MeetingChatProps = {
   messages: MessageItem[];
+  hasParticipants?: boolean;
   isOpen?: boolean;
   onClose: () => void;
 };
 
 export const MeetingChat: FC<MeetingChatProps> = ({
   messages,
+  hasParticipants,
   isOpen,
   onClose,
 }) => {
@@ -38,7 +40,13 @@ export const MeetingChat: FC<MeetingChatProps> = ({
   }, [messages, updateMessages]);
 
   return (
-    <div className={cn(styles.chat, { [styles.open]: isOpen })}>
+    <div
+      className={cn(
+        styles.chat,
+        { [styles.open]: isOpen },
+        { [styles.hasParticipants]: hasParticipants }
+      )}
+    >
       <ul className={styles.list}>
         {chatMessages.map((message, index) => (
           <li
