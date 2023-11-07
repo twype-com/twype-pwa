@@ -1,6 +1,12 @@
+@import "@/styles/_mixins.module";
+
 .grid {
   position: absolute;
   inset: 0;
+
+  @include device(desktop) {
+    inset-inline-end: var(--meeting-desktop-sidebar);
+  }
 }
 
 .video {

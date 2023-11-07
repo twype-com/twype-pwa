@@ -1,3 +1,5 @@
+@import "@/styles/_mixins.module";
+
 .chat {
   overflow: hidden;
   position: relative;
@@ -10,6 +12,20 @@
     #000 100%,
     transparent 100%
   );
+
+  @include device(desktop) {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: absolute;
+    inset: 0;
+    height: calc(100% - 70px);
+    max-height: calc(100% - 52px);
+    mask-image: unset;
+    background: var(--color-background);
+    color: var(--color-text-primary);
+  }
 }
 
 .open {
@@ -53,6 +69,17 @@
       var(--meeting-participant-size) + var(--space-small) * 2
     );
   }
+
+  @include device(desktop) {
+    overflow-y: auto;
+    position: relative;
+    max-height: 100%;
+    padding-block: 0;
+
+    .hasParticipants & {
+      padding-inline-end: var(--space-small);
+    }
+  }
 }
 
 .item {
@@ -86,6 +113,10 @@
   text-shadow: 1px 1px 1px rgba(#000, 0.8);
 
   .open & {
+    text-shadow: none;
+  }
+
+  @include device(desktop) {
     text-shadow: none;
   }
 }

@@ -66,9 +66,6 @@ export const MeetingLayout: FC<MeetingLayoutProps> = ({
           hasParticipants={participants.length > 1}
           onClose={() => setIsChatOpen(false)}
         />
-        {participants.length > 1 && (
-          <MeetingParticipants participants={participants} />
-        )}
         <MeetingActions
           commentsCounter={messages.length}
           likes={likes}
@@ -76,6 +73,9 @@ export const MeetingLayout: FC<MeetingLayoutProps> = ({
           onToggleChat={() => setIsChatOpen(!isChatOpen)}
         />
       </div>
+      {participants.length > 1 && (
+        <MeetingParticipants participants={participants} />
+      )}
     </div>
   );
 };

@@ -1,3 +1,5 @@
+@import "@/styles/_mixins.module";
+
 .actions {
   display: flex;
   align-items: center;
@@ -5,6 +7,11 @@
   gap: var(--space-big);
   position: relative;
   padding: var(--space-small);
+
+  @include device(desktop) {
+    border-block-start: 1px solid var(--color-border);
+    color: var(--color-text-alt);
+  }
 }
 
 .inFrame {
@@ -30,12 +37,21 @@
   .focused & {
     position: absolute;
     inset-inline: var(--space-small);
+
+    @include device(desktop) {
+      position: relative;
+      inset-inline: unset;
+    }
   }
 }
 
 .allComments {
   .focused & {
     visibility: hidden;
+  }
+
+  @include device(desktop) {
+    display: none;
   }
 }
 
@@ -48,8 +64,13 @@
   border-radius: 24px;
   font-size: var(--font-small);
   font-family: inherit;
+  resize: none;
   outline: none;
   vertical-align: bottom;
+
+  @include device(desktop) {
+    height: 52px;
+  }
 }
 
 .controls {
@@ -61,6 +82,10 @@
 
   .focused & {
     visibility: hidden;
+  }
+
+  @include device(desktop) {
+    display: none;
   }
 }
 
