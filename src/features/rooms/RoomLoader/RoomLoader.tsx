@@ -6,6 +6,7 @@ import { Room } from "livekit-client";
 import { Article } from "@/components/Article/Article";
 import { environments } from "@/app/livekit/api/constants";
 import { RoomConnector } from "@/features/rooms/RoomConnector/RoomConnector";
+import { Loader } from "@/components/Loader/Loader";
 
 type RoomLoaderProps = {};
 
@@ -42,15 +43,17 @@ export const RoomLoader: FC<RoomLoaderProps> = () => {
     })();
   }, [connectToRoom, roomName]);
 
-  if (token === "") {
-    return <div>Getting token...</div>;
-  }
-
   return (
     <Article title={`Room ${roomName}`} backUrl="/rooms">
-      <div>Room online: {roomOnline?.name}</div>
-      <Link href={`./${roomOnline?.name}/call`}>Call</Link>
-      {roomOnline && <RoomConnector room={roomOnline} />}
+      {token === "" ? (
+        <Loader title="Getting token..." />
+      ) : (
+        <>
+          <div>Room online: {roomOnline?.name}</div>
+          <Link href={`./${roomOnline?.name}/call`}>Call</Link>
+          {roomOnline && <RoomConnector room={roomOnline} />}
+        </>
+      )}
     </Article>
   );
 };

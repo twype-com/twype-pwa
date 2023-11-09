@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Room } from "livekit-server-sdk";
 import { useQuery } from "@tanstack/react-query";
 import { Article } from "@/components/Article/Article";
+import { Loader } from "@/components/Loader/Loader";
 
 type RoomsListLoaderProps = {};
 
@@ -24,7 +25,7 @@ export const RoomsListLoader: FC<RoomsListLoaderProps> = () => {
       buttonUrl="/rooms/create"
       buttonText="Create new room"
     >
-      {isListLoading && <div>Loading...</div>}
+      {isListLoading && <Loader title="Loading..." />}
       {roomsError ? (
         <div>Something went wrong :(</div>
       ) : rooms?.length > 0 ? (
