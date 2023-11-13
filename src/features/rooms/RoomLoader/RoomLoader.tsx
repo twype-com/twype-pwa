@@ -50,7 +50,8 @@ export const RoomLoader: FC<RoomLoaderProps> = () => {
       ) : (
         <>
           <div>Room online: {roomOnline?.name}</div>
-          <Link href={`./${roomOnline?.name}/call`}>Call</Link>
+          <Link href={`./${roomOnline?.name}/call`}>Call</Link>{" "}
+          <Link href={`./${roomOnline?.name}/edit`}>Edit</Link>
           {roomOnline && <RoomConnector room={roomOnline} />}
         </>
       )}

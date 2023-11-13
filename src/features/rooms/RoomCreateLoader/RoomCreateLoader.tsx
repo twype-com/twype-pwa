@@ -13,7 +13,7 @@ export const RoomCreateLoader: FC<RoomCreateLoaderProps> = () => {
   return (
     <Article title="Create new room" backUrl="/rooms">
       {!newRoom ? (
-        <RoomForm onCreate={(room) => setNewRoom(room)} />
+        <RoomForm onSubmit={(room) => setNewRoom(room)} />
       ) : (
         <CreateRoomSender newRoom={newRoom} />
       )}

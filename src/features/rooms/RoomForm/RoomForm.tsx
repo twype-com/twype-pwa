@@ -13,10 +13,10 @@ import { Input } from "@/components/Input/Input";
 
 type RoomFormProps = {
   className?: string;
-  onCreate: (room: NewRoom) => void;
+  onSubmit: (room: NewRoom) => void;
 };
 
-export const RoomForm: FC<RoomFormProps> = ({ className, onCreate }) => {
+export const RoomForm: FC<RoomFormProps> = ({ className, onSubmit }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [roomName, setRoomName] = useState<string>("");
   const [roomCode, setRoomCode] = useState<string>("");
@@ -43,7 +43,7 @@ export const RoomForm: FC<RoomFormProps> = ({ className, onCreate }) => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    onCreate({
+    onSubmit({
       name: roomName,
       emptyTimeout: roomTimeout ? Number(roomTimeout) : undefined,
       maxParticipants: maxParticipants ? Number(maxParticipants) : undefined,
