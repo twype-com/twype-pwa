@@ -1,3 +1,4 @@
+"use client";
 import { FC, PropsWithChildren, ReactNode } from "react";
 import cn from "classnames";
 import { Button } from "@radix-ui/themes";
