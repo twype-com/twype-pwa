@@ -1,0 +1,37 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--font-little);
+}
+
+.details div {
+  padding: 0 0 8px 0;
+}
+
+.details div:first-child {
+  padding: 16px 0 8px 0;
+}
+
+.profileValues {
+  display: flex;
+  gap: 20px;
+}
+
+.profileValue .value {
+  font-weight: bolder;
+}
+
+.description {
+  margin: 0;
+}
+
+.links {
+  display: flex;
+  gap: 5px;
+  padding-top: 0;
+}
+
+.link {
+  font-weight: bold;
+  color: black;
+}
