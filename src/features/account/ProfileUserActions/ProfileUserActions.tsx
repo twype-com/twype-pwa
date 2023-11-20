@@ -11,13 +11,18 @@ type ProfileUserActionsProps = {
 export const ProfileUserActions: FC<ProfileUserActionsProps> = ({ className }) => {
   return (
     <div className={cn(styles.actions, className)}>
-      <IconButton variant="ghost">
-        <ShareFat size={24} color="black"/>
-      </IconButton>
-
-      {/* <IconButton variant="ghost">
-        <DotsThreeOutlineVertical size={24} color="black"/>
-      </IconButton> */}
+      <DropdownMenu.Root>
+        <DropdownMenu.Trigger>
+          <Button variant="ghost">
+            <ShareFat size={24} color="black"/>
+          </Button>
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Content variant="soft">
+          <DropdownMenu.Item>Share to Facebook</DropdownMenu.Item>
+          <DropdownMenu.Item>Share to Twitter</DropdownMenu.Item>
+          <DropdownMenu.Item>Copy link</DropdownMenu.Item>
+        </DropdownMenu.Content>
+      </DropdownMenu.Root>
 
       <DropdownMenu.Root >
         <DropdownMenu.Trigger>
@@ -25,23 +30,8 @@ export const ProfileUserActions: FC<ProfileUserActionsProps> = ({ className }) =
             <DotsThreeOutlineVertical size={24} color="black" />
           </Button>
         </DropdownMenu.Trigger>
-        <DropdownMenu.Content>
-          {/* <DropdownMenu.Item shortcut="⌘ E">Send Message</DropdownMenu.Item> */}
+        <DropdownMenu.Content variant="soft">
           <DropdownMenu.Item>Send Message</DropdownMenu.Item>
-
-          {/* <DropdownMenu.Separator /> */}
-
-          <DropdownMenu.Sub>
-            <DropdownMenu.SubTrigger>More</DropdownMenu.SubTrigger>
-            <DropdownMenu.SubContent>
-              <DropdownMenu.Item>Recommend</DropdownMenu.Item>
-              <DropdownMenu.Item>Add to favorites</DropdownMenu.Item>
-            </DropdownMenu.SubContent>
-          </DropdownMenu.Sub>
-
-          <DropdownMenu.Item shortcut="⌘ ⌫" color="red">
-            Report
-          </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Root>
     </div>
