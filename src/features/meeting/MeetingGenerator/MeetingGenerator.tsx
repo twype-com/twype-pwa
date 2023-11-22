@@ -50,7 +50,7 @@ export const MeetingGenerator: FC = ({}) => {
       timer();
     }, Math.floor(Math.random() * 10) * 1000);
   };
-
+ 
   useEffectOnce(() => {
     timer();
   });

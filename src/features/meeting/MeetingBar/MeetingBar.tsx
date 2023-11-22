@@ -1,21 +1,21 @@
-"use client";
-import { FC } from "react";
-import cn from "classnames";
-import { MeetingAuthor } from "@/features/meeting/MeetingAuthor/MeetingAuthor";
-import { MeetingControl } from "@/features/meeting/MeetingControl/MeetingControl";
-import styles from "./MeetingBar.module.scss";
+'use client'
+import { FC } from 'react'
+import cn from 'classnames'
+import { MeetingAuthor } from '@/features/meeting/MeetingAuthor/MeetingAuthor'
+import { MeetingControl } from '@/features/meeting/MeetingControl/MeetingControl'
+import styles from './MeetingBar.module.scss'
 
 type MeetingBarProps = {
-  isVisible: boolean;
-  isMicOn?: boolean;
-  isCameraOn?: boolean;
-  isSubscribed?: boolean;
-  followers?: number;
-  toggleMic: (muteState: boolean) => void;
-  toggleCamera: (muteState: boolean) => void;
-  onSubscribe?: () => void;
-  onClose: () => void;
-};
+  isVisible: boolean
+  isMicOn?: boolean
+  isCameraOn?: boolean
+  isSubscribed?: boolean
+  followers?: number
+  toggleMic: (muteState: boolean) => void
+  toggleCamera: (muteState: boolean) => void
+  onSubscribe?: () => void
+  onClose: () => void
+}
 
 export const MeetingBar: FC<MeetingBarProps> = ({
   isVisible,
@@ -67,13 +67,8 @@ export const MeetingBar: FC<MeetingBarProps> = ({
             onClick={() => toggleMic(false)}
           />
         )}
-        <MeetingControl
-          text="Leave the meeting"
-          icon="phone"
-          color="red"
-          onClick={onClose}
-        />
+        <MeetingControl text="Leave the meeting" icon="phone" color="red" onClick={onClose} />
       </div>
     </div>
-  );
-};
+  )
+}

@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import "@livekit/components-styles";
+import '@livekit/components-styles'
 import {
   LiveKitRoom,
   VideoConference,
@@ -9,32 +9,30 @@ import {
   RoomAudioRenderer,
   ControlBar,
   useTracks,
-} from "@livekit/components-react";
-import { useEffect, useState } from "react";
-import { Track } from "livekit-client";
+} from '@livekit/components-react'
+import { useEffect, useState } from 'react'
+import { Track } from 'livekit-client'
 
 export default function LiveKitPage() {
   // TODO: get user input for room and name
-  const room = "twype-room";
-  const name = "demo-user";
-  const [token, setToken] = useState("");
+  const room = 'twype-room'
+  const name = 'demo-user'
+  const [token, setToken] = useState('')
 
   useEffect(() => {
-    (async () => {
+    ;(async () => {
       try {
-        const resp = await fetch(
-          `/livekit/api/get-participant-token?room=${room}&username=${name}`
-        );
-        const data = await resp.json();
-        setToken(data.token);
+        const resp = await fetch(`/livekit/api/get-participant-token?room=${room}&username=${name}`)
+        const data = await resp.json()
+        setToken(data.token)
       } catch (e) {
-        console.error(e);
+        console.error(e)
       }
-    })();
-  }, []);
+    })()
+  }, [])
 
-  if (token === "") {
-    return <div>Getting token...</div>;
+  if (token === '') {
+    return <div>Getting token...</div>
   }
 
   return (
@@ -46,7 +44,7 @@ export default function LiveKitPage() {
       serverUrl={process.env.NEXT_PUBLIC_LIVEKIT_URL}
       // Use the default LiveKit theme for nice styles.
       data-lk-theme="default"
-      style={{ height: "100dvh" }}
+      style={{ height: '100dvh' }}
     >
       {/* Your custom component with basic video conferencing functionality. */}
       <MyVideoConference />
@@ -56,7 +54,7 @@ export default function LiveKitPage() {
       share tracks and to leave the room. */}
       <ControlBar />
     </LiveKitRoom>
-  );
+  )
 }
 
 function MyVideoConference() {
@@ -67,16 +65,13 @@ function MyVideoConference() {
       { source: Track.Source.Camera, withPlaceholder: true },
       { source: Track.Source.ScreenShare, withPlaceholder: false },
     ],
-    { onlySubscribed: false }
-  );
+    { onlySubscribed: false },
+  )
   return (
-    <GridLayout
-      tracks={tracks}
-      style={{ height: "calc(100vh - var(--lk-control-bar-height))" }}
-    >
+    <GridLayout tracks={tracks} style={{ height: 'calc(100vh - var(--lk-control-bar-height))' }}>
       {/* The GridLayout accepts zero or one child. The child is used
       as a template to render all passed in tracks. */}
       <ParticipantTile />
     </GridLayout>
-  );
+  )
 }

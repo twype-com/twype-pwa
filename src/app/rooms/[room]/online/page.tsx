@@ -1,49 +1,49 @@
-"use client";
+'use client'
 
-import { useCallback, useEffect, useState } from "react";
-import { Room } from "livekit-client";
-import { useParams } from "next/navigation";
-import { LiveKitRoom, RoomAudioRenderer } from "@livekit/components-react";
-import { RoomOnline } from "@/features/rooms/RoomOnline/RoomOnline";
-import { Article } from "@/components/Article/Article";
-import { environments } from "@/app/livekit/api/constants";
+import { useCallback, useEffect, useState } from 'react'
+import { Room } from 'livekit-client'
+import { useParams } from 'next/navigation'
+import { LiveKitRoom, RoomAudioRenderer } from '@livekit/components-react'
+import { RoomOnline } from '@/features/rooms/RoomOnline/RoomOnline'
+import { Article } from '@/components/Article/Article'
+import { environments } from '@/app/livekit/api/constants'
 
 export default function RoomOnlinePage() {
-  const { room: roomName } = useParams();
-  const userName = "twype-user";
-  const [token, setToken] = useState("");
+  const { room: roomName } = useParams()
+  const userName = 'twype-user'
+  const [token, setToken] = useState('')
 
-  const [roomOnline, setRoomOnline] = useState<Room | null>(null);
-  const [isDefaultDevicesSet, setIsDefaultDevicesSet] = useState(false);
+  const [roomOnline, setRoomOnline] = useState<Room | null>(null)
+  const [isDefaultDevicesSet, setIsDefaultDevicesSet] = useState(false)
 
-  const { wsUrl } = environments;
+  const { wsUrl } = environments
 
   const connectToRoom = useCallback(
     async (tkn: string) => {
-      const room = new Room();
-      const result = await room.connect(wsUrl, tkn || token);
-      setRoomOnline(room);
+      const room = new Room()
+      const result = await room.connect(wsUrl, tkn || token)
+      setRoomOnline(room)
     },
-    [token, wsUrl]
-  );
+    [token, wsUrl],
+  )
 
   useEffect(() => {
-    (async () => {
+    ;(async () => {
       try {
         const resp = await fetch(
-          `/livekit/api/get-participant-token?room=${roomName}&username=${userName}`
-        );
-        const data = await resp.json();
-        setToken(data.token);
-        connectToRoom(data.token);
+          `/livekit/api/get-participant-token?room=${roomName}&username=${userName}`,
+        )
+        const data = await resp.json()
+        setToken(data.token)
+        connectToRoom(data.token)
       } catch (e) {
-        console.error(e);
+        console.error(e)
       }
-    })();
-  }, [connectToRoom, roomName]);
+    })()
+  }, [connectToRoom, roomName])
 
-  if (token === "") {
-    return <div>Getting token...</div>;
+  if (token === '') {
+    return <div>Getting token...</div>
   }
 
   return (
@@ -65,5 +65,5 @@ export default function RoomOnlinePage() {
         </LiveKitRoom>
       )}
     </Article>
-  );
+  )
 }

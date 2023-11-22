@@ -1,22 +1,20 @@
-"use client";
-import { FC } from "react";
-import cn from "classnames";
-import { Crown, MicrophoneSlash } from "@phosphor-icons/react";
-import { Avatar } from "@radix-ui/themes";
-import { Person } from "@/components/User/User";
-import styles from "./MeetingParticipants.module.scss";
+'use client'
+import { FC } from 'react'
+import cn from 'classnames'
+import { Crown, MicrophoneSlash } from '@phosphor-icons/react'
+import { Avatar } from '@radix-ui/themes'
+import { Person } from '@/components/User/User'
+import styles from './MeetingParticipants.module.scss'
 
 export type Participant = Person & {
-  isMuted?: boolean;
-};
+  isMuted?: boolean
+}
 
 type MeetingParticipantsProps = {
-  participants: Participant[];
-};
+  participants: Participant[]
+}
 
-export const MeetingParticipants: FC<MeetingParticipantsProps> = ({
-  participants,
-}) => {
+export const MeetingParticipants: FC<MeetingParticipantsProps> = ({ participants }) => {
   return (
     <div className={cn(styles.participants)}>
       <ul className={styles.list}>
@@ -35,13 +33,7 @@ export const MeetingParticipants: FC<MeetingParticipantsProps> = ({
                   />
                 ) : (
                   // If camera on
-                  <video
-                    src="/video/cat.webm"
-                    autoPlay
-                    muted
-                    loop
-                    className={styles.video}
-                  />
+                  <video src="/video/cat.webm" autoPlay muted loop className={styles.video} />
                 )}
                 {index === 1 && (
                   // If mic off
@@ -56,9 +48,9 @@ export const MeetingParticipants: FC<MeetingParticipantsProps> = ({
                   </div>
                 )}
               </li>
-            )
+            ),
         )}
       </ul>
     </div>
-  );
-};
+  )
+}

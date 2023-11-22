@@ -1,8 +1,8 @@
-"use client";
-import { FC, useCallback, useRef } from "react";
-import cn from "classnames";
-import { useQuery } from "@tanstack/react-query";
-import Link from "next/link";
+'use client'
+import { FC, useCallback, useRef } from 'react'
+import cn from 'classnames'
+import { useQuery } from '@tanstack/react-query'
+import Link from 'next/link'
 import {
   RoomEvent,
   Room,
@@ -11,44 +11,40 @@ import {
   RemoteParticipant,
   Track,
   VideoQuality,
-} from "livekit-client";
+} from 'livekit-client'
 
 type RoomConnectorProps = {
-  className?: string;
-  room: Room;
-};
+  className?: string
+  room: Room
+}
 
 export const RoomConnector: FC<RoomConnectorProps> = ({ className, room }) => {
-  const videoTrack = useRef<HTMLHeadingElement>(null);
+  const videoTrack = useRef<HTMLHeadingElement>(null)
 
   const handleTrackSubscribed = useCallback(
-    (
-      track: RemoteTrack,
-      publication: RemoteTrackPublication,
-      participant: RemoteParticipant
-    ) => {
-      console.log("🚀 ~ participant:", participant);
-      console.log("🚀 ~ publication:", publication);
-      console.log("🚀 ~ track:", track);
+    (track: RemoteTrack, publication: RemoteTrackPublication, participant: RemoteParticipant) => {
+      console.log('🚀 ~ participant:', participant)
+      console.log('🚀 ~ publication:', publication)
+      console.log('🚀 ~ track:', track)
       if (track.kind === Track.Kind.Video) {
-        publication.setVideoQuality(VideoQuality.LOW);
-        const element = track.attach();
-        videoTrack?.current?.appendChild(element);
+        publication.setVideoQuality(VideoQuality.LOW)
+        const element = track.attach()
+        videoTrack?.current?.appendChild(element)
       }
     },
-    []
-  );
+    [],
+  )
 
   const cnt = useCallback(() => {
-    console.log("!!!!!!!");
-    room.on(RoomEvent.TrackSubscribed, handleTrackSubscribed);
-    const dev = room.getActiveDevice("videoinput");
-    console.log("🚀 ~ cnt ~ dev:", dev);
-  }, [handleTrackSubscribed, room]);
+    console.log('!!!!!!!')
+    room.on(RoomEvent.TrackSubscribed, handleTrackSubscribed)
+    const dev = room.getActiveDevice('videoinput')
+    console.log('🚀 ~ cnt ~ dev:', dev)
+  }, [handleTrackSubscribed, room])
 
   const setCamera = useCallback(() => {
-    room.localParticipant.setCameraEnabled(true);
-  }, [room]);
+    room.localParticipant.setCameraEnabled(true)
+  }, [room])
 
   return (
     <div className={cn(className)}>
@@ -57,5 +53,5 @@ export const RoomConnector: FC<RoomConnectorProps> = ({ className, room }) => {
       <div ref={videoTrack} />
       <button onClick={() => setCamera()}>setCamera</button>
     </div>
-  );
-};
+  )
+}
