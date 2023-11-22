@@ -8,6 +8,7 @@ import {
   Heart,
   Microphone,
   MicrophoneSlash,
+  PaperPlaneTilt,
   Phone,
   ShareFat,
   VideoCamera,
@@ -21,6 +22,7 @@ type MeetingIcon =
   | 'chatText'
   | 'heart'
   | 'heartFill'
+  | 'plane'
   | 'microphone'
   | 'microphoneSlash'
   | 'shareFat'
@@ -55,6 +57,7 @@ export const MeetingControl: FC<MeetingControlProps> = ({
     chatText: <ChatText weight="fill" />,
     heart: <Heart weight="regular" />,
     heartFill: <Heart weight="fill" />,
+    plane: <PaperPlaneTilt weight="regular" />,
     microphone: <Microphone weight="fill" />,
     microphoneSlash: <MicrophoneSlash weight="fill" />,
     phone: <Phone weight="fill" />,

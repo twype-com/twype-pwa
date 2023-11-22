@@ -1,5 +1,5 @@
 'use client'
-import { FC, useState } from 'react'
+import { FC, useCallback, useState } from 'react'
 import cn from 'classnames'
 import { MeetingControl } from '@/features/meeting/MeetingControl/MeetingControl'
 import styles from './MeetingActions.module.scss'
@@ -19,6 +19,10 @@ export const MeetingActions: FC<MeetingActionsProps> = ({
 }) => {
   const [isFocused, setIsFocused] = useState(false)
   const [isLike, setIsLike] = useState(false)
+
+  const handleSubmit = useCallback(() => {
+    console.log('handleSubmit')
+  }, [])
 
   return (
     <div
@@ -43,6 +47,15 @@ export const MeetingActions: FC<MeetingActionsProps> = ({
             placeholder="Add new comment..."
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
+          />
+
+          <MeetingControl
+            className={styles.send}
+            text="Send"
+            label="Send"
+            icon="plane"
+            type="compact"
+            onClick={handleSubmit}
           />
         </div>
       </div>

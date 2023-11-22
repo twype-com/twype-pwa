@@ -1,10 +1,11 @@
 'use client'
 import { FC, useCallback, useState } from 'react'
-import { MeetingVideoGrid } from '@/features/meeting/MeetingVideoGrid/MeetingVideoGrid'
+import { useRouter } from 'next/navigation'
 import { MeetingBar } from '@/features/meeting/MeetingBar/MeetingBar'
 import { MeetingChat } from '@/features/meeting/MeetingChat/MeetingChat'
 import { MeetingParticipants } from '@/features/meeting/MeetingParticipants/MeetingParticipants'
 import { MeetingActions } from '@/features/meeting/MeetingActions/MeetingActions'
+import { MeetingLiveKit } from '@/features/meeting/MeetingLiveKit/MeetingLiveKit'
 import { MessageItem } from '@/features/chat/types'
 import { Person } from '@/components/User/User'
 import styles from './MeetingLayout.module.scss'
@@ -14,7 +15,6 @@ type MeetingLayoutProps = {
   messages: MessageItem[]
   followers?: number
   likes?: number
-  onClose: () => void
 }
 
 export const MeetingLayout: FC<MeetingLayoutProps> = ({
@@ -22,11 +22,11 @@ export const MeetingLayout: FC<MeetingLayoutProps> = ({
   messages,
   followers,
   likes,
-  onClose,
 }) => {
+  const router = useRouter()
   const [isBarVisible, setIsBarVisible] = useState(true)
   const [isMicOn, setIsMicOn] = useState(true)
-  const [isCameraOn, setIsCameraOn] = useState(true)
+  const [isCamOn, setIsCamOn] = useState(true)
   const [isSubscribed, setIsSubscribed] = useState(false)
   const [isChatOpen, setIsChatOpen] = useState(false)
 
@@ -35,30 +35,37 @@ export const MeetingLayout: FC<MeetingLayoutProps> = ({
   }, [])
 
   const handleCam = useCallback((camState: boolean) => {
-    setIsCameraOn(!camState)
+    setIsCamOn(!camState)
   }, [])
+
+  const handleClose = useCallback(() => {
+    router.push('.')
+  }, [router])
 
   const handleSubscribe = useCallback(() => {
     setIsSubscribed(!isSubscribed)
   }, [isSubscribed])
 
+  const token = new URLSearchParams(window.location.search).get('liveKitToken') as string
+
   return (
     <div className={styles.meeting}>
-      <MeetingVideoGrid
-        participants={participants}
-        onClick={() => setIsBarVisible(!isBarVisible)}
-      />
-      <MeetingBar
-        isVisible={isBarVisible}
-        isMicOn={isMicOn}
-        isCameraOn={isCameraOn}
-        isSubscribed={isSubscribed}
-        followers={followers}
-        toggleMic={handleMic}
-        toggleCamera={handleCam}
-        onSubscribe={handleSubscribe}
-        onClose={onClose}
-      />
+      <MeetingLiveKit token={token}>
+        <MeetingBar
+          isVisible={isBarVisible}
+          isMicOn={isMicOn}
+          isCamOn={isCamOn}
+          isSubscribed={isSubscribed}
+          followers={followers}
+          toggleMic={handleMic}
+          toggleCam={handleCam}
+          onSubscribe={handleSubscribe}
+          onClose={handleClose}
+        />
+
+        {participants.length > 1 && <MeetingParticipants participants={participants} />}
+      </MeetingLiveKit>
+
       <div className={styles.content}>
         <MeetingChat
           messages={messages}
@@ -73,7 +80,6 @@ export const MeetingLayout: FC<MeetingLayoutProps> = ({
           onToggleChat={() => setIsChatOpen(!isChatOpen)}
         />
       </div>
-      {participants.length > 1 && <MeetingParticipants participants={participants} />}
     </div>
   )
 }
