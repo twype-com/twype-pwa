@@ -1,9 +1,10 @@
 'use client'
 import { FC } from 'react'
 import cn from 'classnames'
-import { useQuery } from '@tanstack/react-query'
+import axios, { AxiosResponse } from 'axios'
 import Link from 'next/link'
-import { NewRoom } from '../types'
+import { useQuery } from '@tanstack/react-query'
+import { NewRoom } from '@/features/rooms/types'
 
 type CreateRoomFormProps = {
   className?: string
@@ -11,12 +12,41 @@ type CreateRoomFormProps = {
 }
 
 export const CreateRoomSender: FC<CreateRoomFormProps> = ({ className, newRoom }) => {
+  const token = '1234567890' // TODO: Ger real token
+
   const { isLoading, error, data } = useQuery({
-    queryKey: ['activeRoomsList'],
-    queryFn: () =>
-      fetch(
-        `/livekit/api/create-room?name=${newRoom.name}&empty-timeout=${newRoom.emptyTimeout}&max-participants=${newRoom.maxParticipants}`,
-      ).then((res) => res.json()),
+    queryKey: ['createRoomQuery'],
+    queryFn: async () => {
+      return await axios
+        .post<
+          never,
+          AxiosResponse<{
+            room: {
+              id: number
+              sid: string
+              name: string
+              chatId: string
+            }
+            participant: {
+              id: number
+              roomId: number
+              token: string
+              userId: string
+            }
+          }>
+        >(
+          `https://twype-back-dgn2x.ondigitalocean.app/public/room`,
+          {
+            name: newRoom.name,
+          },
+          {
+            headers: {
+              Authorization: token as string,
+            },
+          },
+        )
+        .then((response) => response.data)
+    },
   })
 
   return (
@@ -30,8 +60,10 @@ export const CreateRoomSender: FC<CreateRoomFormProps> = ({ className, newRoom }
           ) : (
             <p>
               Room{' '}
-              <Link href={`/rooms/${data.name}`}>
-                <b>{data.name}</b>
+              <Link
+                href={`/rooms/${data?.room.id}/?liveKitToken=${data?.participant.token}&sid=${data?.room.sid}&chatId=${data?.room.chatId}`}
+              >
+                <b>{data?.room.name}</b>
               </Link>{' '}
               is created!
             </p>

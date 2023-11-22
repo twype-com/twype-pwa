@@ -6,23 +6,13 @@ import { MeetingChat } from '@/features/meeting/MeetingChat/MeetingChat'
 import { MeetingParticipants } from '@/features/meeting/MeetingParticipants/MeetingParticipants'
 import { MeetingActions } from '@/features/meeting/MeetingActions/MeetingActions'
 import { MeetingLiveKit } from '@/features/meeting/MeetingLiveKit/MeetingLiveKit'
-import { MessageItem } from '@/features/chat/types'
-import { Person } from '@/components/User/User'
 import styles from './MeetingLayout.module.scss'
 
-type MeetingLayoutProps = {
-  participants: Person[]
-  messages: MessageItem[]
-  followers?: number
-  likes?: number
-}
+import participants from '@/mocks/participants.json'
 
-export const MeetingLayout: FC<MeetingLayoutProps> = ({
-  participants,
-  messages,
-  followers,
-  likes,
-}) => {
+type MeetingLayoutProps = {}
+
+export const MeetingLayout: FC<MeetingLayoutProps> = () => {
   const router = useRouter()
   const [isBarVisible, setIsBarVisible] = useState(true)
   const [isMicOn, setIsMicOn] = useState(true)
@@ -56,7 +46,7 @@ export const MeetingLayout: FC<MeetingLayoutProps> = ({
           isMicOn={isMicOn}
           isCamOn={isCamOn}
           isSubscribed={isSubscribed}
-          followers={followers}
+          followers={43}
           toggleMic={handleMic}
           toggleCam={handleCam}
           onSubscribe={handleSubscribe}
@@ -68,14 +58,14 @@ export const MeetingLayout: FC<MeetingLayoutProps> = ({
 
       <div className={styles.content}>
         <MeetingChat
-          messages={messages}
+          messages={[]}
           isOpen={isChatOpen}
           hasParticipants={participants.length > 1}
           onClose={() => setIsChatOpen(false)}
         />
         <MeetingActions
-          commentsCounter={messages.length}
-          likes={likes}
+          commentsCounter={43}
+          likes={75}
           isChatOpen={isChatOpen}
           onToggleChat={() => setIsChatOpen(!isChatOpen)}
         />

@@ -6,7 +6,7 @@ import styles from './ProtectContent.module.scss'
 type ProtectContentProps = {}
 
 export const ProtectContent: FC<PropsWithChildren<ProtectContentProps>> = ({ children }) => {
-  const address = '1234567890'
+  const address = '1234567890' // TODO: Ger real token
 
   return (
     <>
