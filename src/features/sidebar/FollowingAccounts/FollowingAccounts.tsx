@@ -1,21 +1,19 @@
-"use client";
-import { FC } from "react";
-import cn from "classnames";
-import { User } from "@/components/User/User";
-import styles from "./FollowingAccounts.module.scss";
+'use client'
+import { FC } from 'react'
+import cn from 'classnames'
+import { User } from '@/components/User/User'
+import styles from './FollowingAccounts.module.scss'
 
 type FollowingAccountsProps = {
-  className?: string;
-};
+  className?: string
+}
 
-export const FollowingAccounts: FC<FollowingAccountsProps> = ({
-  className,
-}) => {
+export const FollowingAccounts: FC<FollowingAccountsProps> = ({ className }) => {
   const list = Array.from({ length: 1 }, (_, i) => i + 1).map((item) => ({
     nickName: `nickName${item}`,
     fullName: `fullName${item}`,
     photoUrl: `https://source.unsplash.com/random/120×120/?avatar${item}`,
-  }));
+  }))
 
   return (
     <div className={cn(styles.following, className)}>
@@ -33,5 +31,5 @@ export const FollowingAccounts: FC<FollowingAccountsProps> = ({
         ))}
       </ul>
     </div>
-  );
-};
+  )
+}

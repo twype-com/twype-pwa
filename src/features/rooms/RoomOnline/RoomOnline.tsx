@@ -1,6 +1,6 @@
-"use client";
-import { FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import cn from "classnames";
+'use client'
+import { FC, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import cn from 'classnames'
 import {
   RoomEvent,
   Room,
@@ -11,38 +11,35 @@ import {
   TrackEvent,
   VideoQuality,
   LocalVideoTrack,
-} from "livekit-client";
+} from 'livekit-client'
 import {
   useRoomContext,
   useConnectionState,
   useTracks,
   VideoTrack,
-} from "@livekit/components-react";
-import { TrackReferenceOrPlaceholder } from "@livekit/components-core";
+} from '@livekit/components-react'
+import { TrackReferenceOrPlaceholder } from '@livekit/components-core'
 
 type RoomOnlineProps = {
-  className?: string;
-};
+  className?: string
+}
 
 export const RoomOnline: FC<RoomOnlineProps> = ({ className }) => {
-  const roomContext = useRoomContext();
-  console.log("🚀 ~ roomContext:", roomContext);
-  const connectionState = useConnectionState();
-  console.log("🚀 ~ connectionState:", connectionState);
+  const roomContext = useRoomContext()
+  console.log('🚀 ~ roomContext:', roomContext)
+  const connectionState = useConnectionState()
+  console.log('🚀 ~ connectionState:', connectionState)
 
-  const cameraTrackRefs = useTracks([
-    { source: Track.Source.Camera, withPlaceholder: true },
-  ]);
-  console.log("🚀 ~ cameraTrackRefs:", cameraTrackRefs);
+  const cameraTrackRefs = useTracks([{ source: Track.Source.Camera, withPlaceholder: true }])
+  console.log('🚀 ~ cameraTrackRefs:', cameraTrackRefs)
 
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null)
 
-  const [localVideoTrack, setLocalVideoTrack] =
-    useState<LocalVideoTrack | null>(null);
+  const [localVideoTrack, setLocalVideoTrack] = useState<LocalVideoTrack | null>(null)
 
   return (
     <div ref={containerRef} className={cn(className)}>
       <p>!!{roomContext.name}</p>
     </div>
-  );
-};
+  )
+}

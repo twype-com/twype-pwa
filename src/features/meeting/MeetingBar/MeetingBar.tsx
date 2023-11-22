@@ -1,33 +1,53 @@
-"use client";
-import { FC } from "react";
-import cn from "classnames";
-import { MeetingAuthor } from "@/features/meeting/MeetingAuthor/MeetingAuthor";
-import { MeetingControl } from "@/features/meeting/MeetingControl/MeetingControl";
-import styles from "./MeetingBar.module.scss";
+'use client'
+import { FC, useCallback, useEffect } from 'react'
+import cn from 'classnames'
+import { useDisconnectButton, useRoomContext } from '@livekit/components-react'
+
+import { MeetingAuthor } from '@/features/meeting/MeetingAuthor/MeetingAuthor'
+import { MeetingControl } from '@/features/meeting/MeetingControl/MeetingControl'
+import styles from './MeetingBar.module.scss'
 
 type MeetingBarProps = {
-  isVisible: boolean;
-  isMicOn?: boolean;
-  isCameraOn?: boolean;
-  isSubscribed?: boolean;
-  followers?: number;
-  toggleMic: (muteState: boolean) => void;
-  toggleCamera: (muteState: boolean) => void;
-  onSubscribe?: () => void;
-  onClose: () => void;
-};
+  isVisible: boolean
+  isMicOn?: boolean
+  isCamOn?: boolean
+  isSubscribed?: boolean
+  followers?: number
+  toggleMic: (muteState: boolean) => void
+  toggleCam: (muteState: boolean) => void
+  onSubscribe?: () => void
+  onClose: () => void
+}
 
 export const MeetingBar: FC<MeetingBarProps> = ({
   isVisible,
   isMicOn,
-  isCameraOn,
+  isCamOn,
   isSubscribed,
   followers,
   toggleMic,
-  toggleCamera,
+  toggleCam,
   onSubscribe,
   onClose,
 }) => {
+  const { buttonProps } = useDisconnectButton({ stopTracks: true })
+  const room = useRoomContext()
+
+  useEffect(() => {
+    if (room.state !== 'connected') return
+    room.localParticipant.setMicrophoneEnabled(!!isMicOn)
+  }, [isMicOn, room])
+
+  useEffect(() => {
+    if (room.state !== 'connected') return
+    room.localParticipant.setCameraEnabled(!!isCamOn)
+  }, [isCamOn, room])
+
+  const handleDisconnect = useCallback(() => {
+    buttonProps.onClick()
+    onClose()
+  }, [buttonProps, onClose])
+
   return (
     <div className={cn(styles.bar, { [styles.visible]: isVisible })}>
       <div className={styles.author}>
@@ -41,17 +61,22 @@ export const MeetingBar: FC<MeetingBarProps> = ({
       </div>
       <div className={styles.controls}>
         {/* <MeetingControl icon="cameraRotate" onClick={() => {}} /> */}
-        {isCameraOn ? (
+        <MeetingControl
+          text={`Turn ${isCamOn ? 'on' : 'off'} camera`}
+          icon="videoCamera"
+          onClick={() => toggleCam(!isCamOn)}
+        />
+        {isCamOn ? (
           <MeetingControl
             text="Turn off camera"
             icon="videoCamera"
-            onClick={() => toggleCamera(true)}
+            onClick={() => toggleCam(true)}
           />
         ) : (
           <MeetingControl
             text="Turn on camera"
             icon="videoCameraSlash"
-            onClick={() => toggleCamera(false)}
+            onClick={() => toggleCam(false)}
           />
         )}
         {isMicOn ? (
@@ -67,13 +92,8 @@ export const MeetingBar: FC<MeetingBarProps> = ({
             onClick={() => toggleMic(false)}
           />
         )}
-        <MeetingControl
-          text="Leave the meeting"
-          icon="phone"
-          color="red"
-          onClick={onClose}
-        />
+        <MeetingControl text="Leave the meeting" icon="phone" color="red" onClick={onClose} />
       </div>
     </div>
-  );
-};
+  )
+}
