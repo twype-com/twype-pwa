@@ -1,6 +1,6 @@
-"use client";
-import { FC } from "react";
-import cn from "classnames";
+'use client'
+import { FC } from 'react'
+import cn from 'classnames'
 import {
   Envelope,
   House,
@@ -9,73 +9,69 @@ import {
   VideoCamera,
   Users,
   User,
-} from "@phosphor-icons/react";
-import { MenuItem, MenuItemName } from "../types";
-import styles from "./MainMenu.module.scss";
+} from '@phosphor-icons/react'
+import { MenuItem, MenuItemName } from '../types'
+import styles from './MainMenu.module.scss'
 
 type MainMenuProps = {
-  className?: string;
-  isHorizontal?: boolean;
-  items: MenuItemName[];
-};
+  className?: string
+  isHorizontal?: boolean
+  items: MenuItemName[]
+}
 
-export const MainMenu: FC<MainMenuProps> = ({
-  className,
-  isHorizontal,
-  items,
-}) => {
+export const MainMenu: FC<MainMenuProps> = ({ className, isHorizontal, items }) => {
   const list: MenuItem[] = [
     {
       name: MenuItemName.HOME,
-      text: "For You",
-      slug: "home",
+      text: 'For You',
+      slug: 'home',
       icon: <House weight="bold" />,
     },
     {
       name: MenuItemName.FOLLOWING,
-      text: "Following",
-      slug: "following",
+      text: 'Following',
+      slug: 'following',
       icon: <Users weight="bold" />,
     },
     {
       name: MenuItemName.EXPLORE,
-      text: "Explore",
-      slug: "explore",
+      text: 'Explore',
+      slug: 'explore',
       icon: <MagnifyingGlass weight="bold" />,
       isActive: true,
     },
     {
       name: MenuItemName.LIVE,
-      text: "Live",
-      slug: "live",
+      text: 'Live',
+      slug: 'live',
       icon: <VideoCamera weight="bold" />,
     },
     {
       name: MenuItemName.UPLOAD,
-      text: "Upload",
-      slug: "upload",
+      text: 'Upload',
+      slug: 'upload',
       icon: <Plus weight="bold" />,
       isAccent: true,
     },
     {
       name: MenuItemName.INBOX,
-      text: "Inbox",
-      slug: "inbox",
+      text: 'Inbox',
+      slug: 'inbox',
       icon: <Envelope weight="bold" />,
     },
     {
       name: MenuItemName.ME,
-      text: "Me",
-      slug: "me",
+      text: 'Me',
+      slug: 'me',
       icon: <User weight="bold" />,
     },
-  ];
+  ]
 
   const menu = items
     .map((menuItem) => {
-      return list.find((item) => item.name === menuItem);
+      return list.find((item) => item.name === menuItem)
     })
-    .filter(Boolean);
+    .filter(Boolean)
 
   return (
     <nav className={cn(styles.menu, className)}>
@@ -86,7 +82,7 @@ export const MainMenu: FC<MainMenuProps> = ({
               className={cn(
                 styles.link,
                 { [styles.active]: item?.isActive },
-                { [styles.upload]: item?.name === MenuItemName.UPLOAD }
+                { [styles.upload]: item?.name === MenuItemName.UPLOAD },
               )}
               href={`#${item?.slug}`}
             >
@@ -99,5 +95,5 @@ export const MainMenu: FC<MainMenuProps> = ({
         ))}
       </ul>
     </nav>
-  );
-};
+  )
+}

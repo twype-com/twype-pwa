@@ -1,5 +1,5 @@
 export type NewRoom = {
-  name: string;
-  emptyTimeout?: number;
-  maxParticipants?: number;
-};
+  name: string
+  emptyTimeout?: number
+  maxParticipants?: number
+}

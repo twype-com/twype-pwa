@@ -1,14 +1,12 @@
-import { FC, PropsWithChildren } from "react";
-import { Header } from "@/features/headline/Header/Header";
-import { Sidebar } from "@/features/sidebar/Sidebar/Sidebar";
-import { Footer } from "@/features/footer/Footer/Footer";
-import styles from "./MainLayout.module.scss";
+import { FC, PropsWithChildren } from 'react'
+import { Header } from '@/features/headline/Header/Header'
+import { Sidebar } from '@/features/sidebar/Sidebar/Sidebar'
+import { Footer } from '@/features/footer/Footer/Footer'
+import styles from './MainLayout.module.scss'
 
-type MainLayoutProps = {};
+type MainLayoutProps = {}
 
-export const MainLayout: FC<PropsWithChildren<MainLayoutProps>> = ({
-  children,
-}) => {
+export const MainLayout: FC<PropsWithChildren<MainLayoutProps>> = ({ children }) => {
   return (
     <div className={styles.layout}>
       <Header className={styles.header} />
@@ -18,5 +16,5 @@ export const MainLayout: FC<PropsWithChildren<MainLayoutProps>> = ({
       <Sidebar className={styles.sidebar} />
       <Footer className={styles.footer} />
     </div>
-  );
-};
+  )
+}

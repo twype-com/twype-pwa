@@ -1,21 +1,23 @@
-"use client";
-import { FC, PropsWithChildren, ReactNode } from "react";
-import cn from "classnames";
-import { Button } from "@radix-ui/themes";
-import { ArrowCircleLeft } from "@phosphor-icons/react";
-import styles from "./Article.module.scss";
-import Link from "next/link";
+'use client'
+import { FC, PropsWithChildren, ReactNode } from 'react'
+import cn from 'classnames'
+import Link from 'next/link'
+import { Button } from '@radix-ui/themes'
+import { ArrowCircleLeft } from '@phosphor-icons/react'
+import { ProtectContent } from '../ProtectContent/ProtectContent'
+import styles from './Article.module.scss'
 
 type ArticleProps = {
-  className?: string;
-  title?: string;
-  description?: string;
-  backUrl?: string;
-  buttonUrl?: string;
-  buttonText?: string;
-  beforeArticle?: ReactNode;
-  onClick?: () => void;
-};
+  className?: string
+  title?: string
+  description?: string
+  backUrl?: string
+  buttonUrl?: string
+  buttonText?: string
+  beforeArticle?: ReactNode
+  isProtected?: boolean
+  onClick?: () => void
+}
 
 export const Article: FC<PropsWithChildren<ArticleProps>> = ({
   className,
@@ -26,13 +28,12 @@ export const Article: FC<PropsWithChildren<ArticleProps>> = ({
   buttonText,
   beforeArticle,
   children,
+  isProtected,
   onClick,
 }) => {
   return (
     <article className={cn(styles.article, className)}>
-      {beforeArticle && (
-        <div className={styles.beforeArticle}>{beforeArticle}</div>
-      )}
+      {beforeArticle && <div className={styles.beforeArticle}>{beforeArticle}</div>}
 
       {(title || (buttonText && onClick)) && (
         <header className={styles.header}>
@@ -54,14 +55,14 @@ export const Article: FC<PropsWithChildren<ArticleProps>> = ({
                   <Button>{buttonText}</Button>
                 </Link>
               )}
-              {onClick && !buttonUrl && (
-                <Button onClick={onClick}>{buttonText}</Button>
-              )}
+              {onClick && !buttonUrl && <Button onClick={onClick}>{buttonText}</Button>}
             </div>
           )}
         </header>
       )}
-      <section className={styles.content}>{children}</section>
+      <section className={styles.content}>
+        {isProtected ? <ProtectContent>{children}</ProtectContent> : children}
+      </section>
     </article>
-  );
-};
+  )
+}

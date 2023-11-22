@@ -1,16 +1,16 @@
-"use client";
-import { FC } from "react";
-import cn from "classnames";
-import { Avatar, Button } from "@radix-ui/themes";
-import styles from "./MeetingAuthor.module.scss";
+'use client'
+import { FC } from 'react'
+import cn from 'classnames'
+import { Avatar, Button } from '@radix-ui/themes'
+import styles from './MeetingAuthor.module.scss'
 
 type MeetingAuthorProps = {
-  name: string;
-  photoUrl?: string;
-  followers?: number;
-  isSubscribed?: boolean;
-  onSubscribe?: () => void;
-};
+  name: string
+  photoUrl?: string
+  followers?: number
+  isSubscribed?: boolean
+  onSubscribe?: () => void
+}
 
 export const MeetingAuthor: FC<MeetingAuthorProps> = ({
   name,
@@ -28,9 +28,9 @@ export const MeetingAuthor: FC<MeetingAuthorProps> = ({
       </div>
       <div className={styles.action}>
         <Button color="red" radius="full" size="1" onClick={onSubscribe}>
-          {isSubscribed ? "Unsubscribe" : "Subscribe"}
+          {isSubscribed ? 'Unsubscribe' : 'Subscribe'}
         </Button>
       </div>
     </div>
-  );
-};
+  )
+}

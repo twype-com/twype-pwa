@@ -1,13 +1,13 @@
-"use client";
-import { FC } from "react";
-import cn from "classnames";
-import { MenuItemName } from "@/features/navigation/types";
-import { MainMenu } from "@/features/navigation/MainMenu/MainMenu";
-import styles from "./Footer.module.scss";
+'use client'
+import { FC } from 'react'
+import cn from 'classnames'
+import { MenuItemName } from '@/features/navigation/types'
+import { MainMenu } from '@/features/navigation/MainMenu/MainMenu'
+import styles from './Footer.module.scss'
 
 type FooterProps = {
-  className?: string;
-};
+  className?: string
+}
 
 export const Footer: FC<FooterProps> = ({ className }) => {
   return (
@@ -23,5 +23,5 @@ export const Footer: FC<FooterProps> = ({ className }) => {
         ]}
       />
     </footer>
-  );
-};
+  )
+}

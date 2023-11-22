@@ -1,33 +1,33 @@
-"use client";
-import { FC } from "react";
-import { Avatar } from "@radix-ui/themes";
-import { Envelope } from "@phosphor-icons/react";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { UserMenuItem } from "../types";
-import styles from "./HeaderUser.module.scss";
+'use client'
+import { FC } from 'react'
+import { Avatar } from '@radix-ui/themes'
+import { Envelope } from '@phosphor-icons/react'
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+import { UserMenuItem } from '../types'
+import styles from './HeaderUser.module.scss'
 
 type HeaderUserProps = {
-  className?: string;
-};
+  className?: string
+}
 
 export const HeaderUser: FC<HeaderUserProps> = ({ className }) => {
   const menu: UserMenuItem[] = [
     {
-      text: "View profile",
-      slug: "#profile",
+      text: 'View profile',
+      slug: '#profile',
       icon: <Envelope />,
     },
     {
-      text: "Favorites",
-      slug: "#favorites",
+      text: 'Favorites',
+      slug: '#favorites',
       icon: <Envelope />,
     },
     {
-      text: "Settings",
-      slug: "#settings",
+      text: 'Settings',
+      slug: '#settings',
       icon: <Envelope />,
     },
-  ];
+  ]
 
   return (
     <DropdownMenu.Root>
@@ -41,19 +41,11 @@ export const HeaderUser: FC<HeaderUserProps> = ({ className }) => {
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Portal>
-        <DropdownMenu.Content
-          className={styles.DropdownMenuContent}
-          sideOffset={5}
-        >
+        <DropdownMenu.Content className={styles.DropdownMenuContent} sideOffset={5}>
           {menu.map((item) => (
-            <DropdownMenu.Item
-              className={styles.DropdownMenuItem}
-              key={item.slug}
-            >
+            <DropdownMenu.Item className={styles.DropdownMenuItem} key={item.slug}>
               {item.text}
-              {item.rightSlot && (
-                <div className={styles.RightSlot}>{item.rightSlot}</div>
-              )}
+              {item.rightSlot && <div className={styles.RightSlot}>{item.rightSlot}</div>}
             </DropdownMenu.Item>
           ))}
 
@@ -67,5 +59,5 @@ export const HeaderUser: FC<HeaderUserProps> = ({ className }) => {
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>
-  );
-};
+  )
+}

@@ -1,12 +1,12 @@
-import { FC } from "react";
-import cn from "classnames";
-import { Logo } from "@/components/Logo/Logo";
-import { HeaderActions } from "../HeaderActions/HeaderActions";
-import styles from "./Header.module.scss";
+import { FC } from 'react'
+import cn from 'classnames'
+import { Logo } from '@/components/Logo/Logo'
+import { HeaderActions } from '../HeaderActions/HeaderActions'
+import styles from './Header.module.scss'
 
 type HeaderProps = {
-  className?: string;
-};
+  className?: string
+}
 
 export const Header: FC<HeaderProps> = ({ className }) => {
   return (
@@ -19,5 +19,5 @@ export const Header: FC<HeaderProps> = ({ className }) => {
         </div>
       </div>
     </header>
-  );
-};
+  )
+}
