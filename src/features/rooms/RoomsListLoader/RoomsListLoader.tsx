@@ -1,19 +1,20 @@
 'use client'
 import { FC, useCallback } from 'react'
 import Link from 'next/link'
+import axios, { AxiosResponse } from 'axios'
 import { Room } from 'livekit-server-sdk'
 import { useQuery } from '@tanstack/react-query'
+import useUserStore from '@/features/user/store'
 import { Article } from '@/components/Article/Article'
 import { Loader } from '@/components/Loader/Loader'
 import { Feed } from '@/features/explore/Feed/Feed'
 import { PostPreview } from '@/features/explore/PostPreview/PostPreview'
-import axios, { AxiosResponse } from 'axios'
 import { useRouter } from 'next/navigation'
 
 type RoomsListLoaderProps = {}
 
 export const RoomsListLoader: FC<RoomsListLoaderProps> = () => {
-  const token = '1234567890' // TODO: Ger real token
+  const token = useUserStore((state) => state.livekitToken)
   const { push } = useRouter()
   // TODO: Use real vars
   const isListLoading = false
