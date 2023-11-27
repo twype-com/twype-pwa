@@ -1,3 +1,3 @@
 export default function DevPage() {
-  return <div>USERS</div>;
+  return <div>USERS</div>
 }

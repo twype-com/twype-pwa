@@ -1,12 +1,12 @@
-import { FC } from "react";
-import cn from "classnames";
-import styles from "./ProfileUserActions.module.scss";
-import { Button, DropdownMenu, IconButton } from "@radix-ui/themes";
-import { ShareFat, DotsThreeOutlineVertical } from "@phosphor-icons/react";
+import { FC } from 'react'
+import cn from 'classnames'
+import styles from './ProfileUserActions.module.scss'
+import { Button, DropdownMenu, IconButton } from '@radix-ui/themes'
+import { ShareFat, DotsThreeOutlineVertical } from '@phosphor-icons/react'
 
 type ProfileUserActionsProps = {
-  className?: string;
-};
+  className?: string
+}
 
 export const ProfileUserActions: FC<ProfileUserActionsProps> = ({ className }) => {
   return (
@@ -14,7 +14,7 @@ export const ProfileUserActions: FC<ProfileUserActionsProps> = ({ className }) =
       <DropdownMenu.Root>
         <DropdownMenu.Trigger>
           <Button variant="ghost">
-            <ShareFat size={24} color="black"/>
+            <ShareFat size={24} color="black" />
           </Button>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content variant="soft">
@@ -24,7 +24,7 @@ export const ProfileUserActions: FC<ProfileUserActionsProps> = ({ className }) =
         </DropdownMenu.Content>
       </DropdownMenu.Root>
 
-      <DropdownMenu.Root >
+      <DropdownMenu.Root>
         <DropdownMenu.Trigger>
           <Button variant="ghost">
             <DotsThreeOutlineVertical size={24} color="black" />
@@ -35,5 +35,5 @@ export const ProfileUserActions: FC<ProfileUserActionsProps> = ({ className }) =
         </DropdownMenu.Content>
       </DropdownMenu.Root>
     </div>
-  );
-};
+  )
+}
