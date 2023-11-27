@@ -3,6 +3,6 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: flex-start;
-  gap: 16px;
+  gap: var(--space-base);
   margin-left: auto;
 }

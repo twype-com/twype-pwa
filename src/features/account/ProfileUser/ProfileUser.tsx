@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import cn from 'classnames'
-import styles from './ProfileUser.module.scss'
+import { Avatar } from '@radix-ui/themes'
 import { ProfileUserMain } from '../ProfileUserMain/ProfileUserMain'
 import { ProfileUserActions } from '../ProfileUserActions/ProfileUserActions'
 import { UserProfile } from '../types'
-import { Avatar } from '@radix-ui/themes'
+import styles from './ProfileUser.module.scss'
 
 type ProfileUserProps = {
   className?: string

@@ -5,20 +5,20 @@
 }
 
 .details div {
-  padding: 0 0 8px 0;
+  padding: 0 0 var(--space-small) 0;
 }
 
 .details div:first-child {
-  padding: 16px 0 8px 0;
+  padding: var(--space-base) 0 var(--space-small) 0;
 }
 
 .profileValues {
   display: flex;
-  gap: 20px;
+  gap: var(--space-big);
 }
 
 .profileValue .value {
-  font-weight: bolder;
+  font-weight: var(--font-bold);
 }
 
 .description {
@@ -27,11 +27,11 @@
 
 .links {
   display: flex;
-  gap: 5px;
+  gap: var(--space-small);
   padding-top: 0;
 }
 
 .link {
-  font-weight: bold;
+  font-weight: var(--font-bold);
   color: var(--color-primary);
 }

@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import cn from 'classnames'
-import styles from './ProfileUserMain.module.scss'
 import { Button } from '@radix-ui/themes'
 import { UserProfile } from '../types'
+import styles from './ProfileUserMain.module.scss'
 
 type ProfileUserMainProps = {
   className?: string

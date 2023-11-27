@@ -1,7 +1,6 @@
 'use client'
 import { FC } from 'react'
 import { Article } from '@/components/Article/Article'
-// import { Loader } from "@/components/Loader/Loader";
 import { ProfileUser } from '../ProfileUser/ProfileUser'
 import { ProfileDetails } from '../ProfileDetails/ProfileDetails'
 import { UserProfile } from '../types'
@@ -26,7 +25,6 @@ export const ProfileLoader: FC<ProfileLoaderProps> = () => {
 
   return (
     <Article title="Profile" backUrl="/">
-      {/* <Loader title="Getting profile..." /> */}
       <ProfileUser profile={fakeUser} />
       <ProfileDetails profile={fakeUser} />
     </Article>
