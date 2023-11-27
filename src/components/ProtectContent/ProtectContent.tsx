@@ -1,12 +1,15 @@
 'use client'
 import { FC, PropsWithChildren } from 'react'
 import { Button } from '@radix-ui/themes'
+import useUserStore from '@/features/user/store'
+import { TMP_WALLET_ADDRESS } from '@/features/user/constants'
 import styles from './ProtectContent.module.scss'
 
 type ProtectContentProps = {}
 
 export const ProtectContent: FC<PropsWithChildren<ProtectContentProps>> = ({ children }) => {
-  const address = '1234567890' // TODO: Ger real token
+  const address = useUserStore((state) => state.walletAddress)
+  const login = useUserStore((state) => state.updateWalletAddress)
 
   return (
     <>
@@ -15,7 +18,9 @@ export const ProtectContent: FC<PropsWithChildren<ProtectContentProps>> = ({ chi
           <div className={styles.content}>
             <h2 className={styles.title}>Please, connect wallet</h2>
             <div className={styles.wallet}>
-              <Button variant="outline">Connect wallet</Button>
+              <Button variant="outline" onClick={() => login(TMP_WALLET_ADDRESS)}>
+                Connect wallet
+              </Button>
             </div>
           </div>
         </div>

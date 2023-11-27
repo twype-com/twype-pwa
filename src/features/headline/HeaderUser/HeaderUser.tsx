@@ -1,8 +1,10 @@
 'use client'
 import { FC } from 'react'
-import { Avatar } from '@radix-ui/themes'
+import { Avatar, Button } from '@radix-ui/themes'
 import { Envelope } from '@phosphor-icons/react'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+import useUserStore from '@/features/user/store'
+import { TMP_WALLET_ADDRESS } from '@/features/user/constants'
 import { UserMenuItem } from '../types'
 import styles from './HeaderUser.module.scss'
 
@@ -11,6 +13,9 @@ type HeaderUserProps = {
 }
 
 export const HeaderUser: FC<HeaderUserProps> = ({ className }) => {
+  const address = useUserStore((state) => state.walletAddress)
+  const login = useUserStore((state) => state.updateWalletAddress)
+
   const menu: UserMenuItem[] = [
     {
       text: 'View profile',
@@ -28,6 +33,14 @@ export const HeaderUser: FC<HeaderUserProps> = ({ className }) => {
       icon: <Envelope />,
     },
   ]
+
+  if (!address) {
+    return (
+      <Button onClick={() => login(TMP_WALLET_ADDRESS)} variant="outline">
+        Connect wallet
+      </Button>
+    )
+  }
 
   return (
     <DropdownMenu.Root>
@@ -51,7 +64,7 @@ export const HeaderUser: FC<HeaderUserProps> = ({ className }) => {
 
           <DropdownMenu.Separator className={styles.DropdownMenuSeparator} />
 
-          <DropdownMenu.Item className={styles.DropdownMenuItem}>
+          <DropdownMenu.Item className={styles.DropdownMenuItem} onClick={() => login(null)}>
             Log out <div className={styles.RightSlot}>⌘+E</div>
           </DropdownMenu.Item>
 
