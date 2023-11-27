@@ -1,4 +1,4 @@
-@import "@/styles/_mixins.module";
+@import '@/styles/_mixins.module';
 
 .row {
   --side-width: var(--form-side-width, 140px);
@@ -36,7 +36,6 @@
   // }
 
   display: flex;
-
 }
 
 .side {
@@ -52,7 +51,7 @@
   display: flex;
   align-items: center;
   min-height: var(--control-height);
-  font-size: var(--font-big);;
+  font-size: var(--font-big);
 }
 
 .main {

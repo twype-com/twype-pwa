@@ -54,13 +54,13 @@ export const SettingsForm: FC<SettingsFormProps> = ({ className }) => {
               <div className={formStyles.side}>
                 <Form.Label className={formStyles.label}>Notifications</Form.Label>
               </div>
-              <div className={formStyles.info}>
-                Delete account
-              </div>
+              <div className={formStyles.info}>Delete account</div>
             </div>
             <div className={formStyles.main}>
-              <Form.Control asChild className='control'>
-                <Button color='red' variant="outline">Delete</Button>
+              <Form.Control asChild className="control">
+                <Button color="red" variant="outline">
+                  Delete
+                </Button>
               </Form.Control>
               {/* <Form.Message
                 match="valueMissing"
@@ -70,9 +70,7 @@ export const SettingsForm: FC<SettingsFormProps> = ({ className }) => {
               </Form.Message> */}
             </div>
           </Form.Field>
-          <Form.Field name="roomName" className={formStyles.field}>
-
-          </Form.Field>
+          <Form.Field name="roomName" className={formStyles.field}></Form.Field>
         </div>
 
         <div className={formStyles.row}>
@@ -82,13 +80,11 @@ export const SettingsForm: FC<SettingsFormProps> = ({ className }) => {
               <div className={formStyles.side}>
                 <Form.Label className={formStyles.label}>Discoverability</Form.Label>
               </div>
-              <div className={formStyles.info}>
-                Private account
-              </div>
+              <div className={formStyles.info}>Private account</div>
             </div>
             <div className={formStyles.main}>
-              <Form.Control asChild className='control'>
-                <Switch className='switch'/>
+              <Form.Control asChild className="control">
+                <Switch className="switch" />
                 {/* <Input
                   type="text"
                   value={roomCode}
@@ -109,15 +105,11 @@ export const SettingsForm: FC<SettingsFormProps> = ({ className }) => {
               <div className={formStyles.side}>
                 <Form.Label className={formStyles.label}>Data</Form.Label>
               </div>
-              <div className={formStyles.info}>
-                Download your data
-              </div>
+              <div className={formStyles.info}>Download your data</div>
             </div>
             <div className={formStyles.main}>
-              <Form.Control asChild className='control'>
-                <div>
-                  {'>'}
-                </div>
+              <Form.Control asChild className="control">
+                <div>{'>'}</div>
                 {/* <Input
                   type="text"
                   value={roomCode}
@@ -140,13 +132,11 @@ export const SettingsForm: FC<SettingsFormProps> = ({ className }) => {
               <div className={formStyles.side}>
                 <Form.Label className={formStyles.label}>Desktop notifications</Form.Label>
               </div>
-              <div className={formStyles.info}>
-                Allow in browser
-              </div>
+              <div className={formStyles.info}>Allow in browser</div>
             </div>
             <div className={formStyles.main}>
-              <Form.Control asChild className='control'>
-                <Switch className='switch'/>
+              <Form.Control asChild className="control">
+                <Switch className="switch" />
               </Form.Control>
             </div>
           </Form.Field>
@@ -157,17 +147,14 @@ export const SettingsForm: FC<SettingsFormProps> = ({ className }) => {
               <div className={formStyles.side}>
                 <Form.Label className={formStyles.label}>Your preferences</Form.Label>
               </div>
-              <div className={formStyles.info}>
-                Interactions
-              </div>
+              <div className={formStyles.info}>Interactions</div>
             </div>
             <div className={formStyles.main}>
-              <Form.Control asChild className='control'>
+              <Form.Control asChild className="control">
                 <div>
-                <IconButton variant='ghost' color="red">
-                  <CaretDown size={16} />
-                </IconButton>
-                
+                  <IconButton variant="ghost" color="red">
+                    <CaretDown size={16} />
+                  </IconButton>
                 </div>
                 {/* <Input
                   type="text"
