@@ -58,19 +58,12 @@ export const SettingsForm: FC<SettingsFormProps> = ({ className }) => {
             </div>
             <div className={formStyles.main}>
               <Form.Control asChild className="control">
-                <Button color="red" variant="outline">
+                <Button color="red" variant="outline" className={formStyles.delete}>
                   Delete
                 </Button>
               </Form.Control>
-              {/* <Form.Message
-                match="valueMissing"
-                className={cn(formStyles.message, formStyles.error)}
-              >
-                Please enter Room name
-              </Form.Message> */}
             </div>
           </Form.Field>
-          <Form.Field name="roomName" className={formStyles.field}></Form.Field>
         </div>
 
         <div className={formStyles.row}>
@@ -85,15 +78,6 @@ export const SettingsForm: FC<SettingsFormProps> = ({ className }) => {
             <div className={formStyles.main}>
               <Form.Control asChild className="control">
                 <Switch className="switch" />
-                {/* <Input
-                  type="text"
-                  value={roomCode}
-                  required
-                  readOnly
-                  width={180}
-                  className={formStyles.input}
-                  onChange={(event) => setRoomCode(event.target.value)}
-                /> */}
               </Form.Control>
               <Form.Message match="valueMissing">Please enter Room code</Form.Message>
             </div>
@@ -109,16 +93,9 @@ export const SettingsForm: FC<SettingsFormProps> = ({ className }) => {
             </div>
             <div className={formStyles.main}>
               <Form.Control asChild className="control">
-                <div>{'>'}</div>
-                {/* <Input
-                  type="text"
-                  value={roomCode}
-                  required
-                  readOnly
-                  width={180}
-                  className={formStyles.input}
-                  onChange={(event) => setRoomCode(event.target.value)}
-                /> */}
+                <IconButton variant="ghost" disabled>
+                  {'>'}
+                </IconButton>
               </Form.Control>
               <Form.Message match="valueMissing">Please enter Room code</Form.Message>
             </div>
@@ -151,20 +128,9 @@ export const SettingsForm: FC<SettingsFormProps> = ({ className }) => {
             </div>
             <div className={formStyles.main}>
               <Form.Control asChild className="control">
-                <div>
-                  <IconButton variant="ghost" color="red">
-                    <CaretDown size={16} />
-                  </IconButton>
-                </div>
-                {/* <Input
-                  type="text"
-                  value={roomCode}
-                  required
-                  readOnly
-                  width={180}
-                  className={formStyles.input}
-                  onChange={(event) => setRoomCode(event.target.value)}
-                /> */}
+                <IconButton variant="ghost" disabled>
+                  <CaretDown size={16} />
+                </IconButton>
               </Form.Control>
               <Form.Message match="valueMissing">Please enter Room code</Form.Message>
             </div>

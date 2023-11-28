@@ -23,7 +23,7 @@
 }
 
 .section {
-  padding-left: 10px;
+  padding-left: var(--space-base);
 }
 
 .field {
@@ -58,17 +58,18 @@
   display: flex;
   max-width: 368px;
   margin-left: auto;
-  margin-right: 20px;
-  justify-content: end;
-  align-items: end;
+  padding-right: var(--space-base);
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
-.main Button {
+.delete {
   box-shadow: none;
   padding: 0;
+  height: min-content;
 }
 
-.main Button:hover {
+.delete:hover {
   cursor: pointer;
   background: none;
 }
