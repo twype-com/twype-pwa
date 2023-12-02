@@ -1,6 +1,7 @@
 'use client'
 import { FC, useCallback, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import useUserStore from '@/features/user/store'
 import { MeetingBar } from '@/features/meeting/MeetingBar/MeetingBar'
 import { MeetingChat } from '@/features/meeting/MeetingChat/MeetingChat'
 import { MeetingParticipants } from '@/features/meeting/MeetingParticipants/MeetingParticipants'
@@ -36,7 +37,9 @@ export const MeetingLayout: FC<MeetingLayoutProps> = () => {
     setIsSubscribed(!isSubscribed)
   }, [isSubscribed])
 
-  const token = new URLSearchParams(window.location.search).get('liveKitToken') as string
+  const token = useUserStore((state) => state.livekitToken)
+
+  if (!token) return null
 
   return (
     <div className={styles.meeting}>

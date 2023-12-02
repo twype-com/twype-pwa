@@ -1,11 +1,9 @@
-import { Metadata } from 'next'
 import { ProfileLoader } from '@/features/account/ProfileLoader/ProfileLoader'
 
-export const metadata: Metadata = {
-  title: 'Twype user',
-  description: '...Description',
+export async function generateStaticParams() {
+  return [{ nickname: 'test' }]
 }
 
-export default function DevPage() {
+export default function ProfilePage({ params }: { params: { nickname: string } }) {
   return <ProfileLoader />
 }
