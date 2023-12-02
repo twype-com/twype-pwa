@@ -1,11 +1,9 @@
-import { Metadata } from 'next'
 import { RoomEditLoader } from '@/features/rooms/RoomEditLoader/RoomEditLoader'
 
-export const metadata: Metadata = {
-  title: 'Create room in Twype',
-  description: '...Description',
+export async function generateStaticParams() {
+  return [{ room: 'test' }]
 }
 
-export default function CreateRoomPage() {
+export default function CreateRoomPage({ params }: { params: { room: string } }) {
   return <RoomEditLoader />
 }

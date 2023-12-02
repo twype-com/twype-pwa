@@ -36,7 +36,8 @@ export const MeetingLayout: FC<MeetingLayoutProps> = () => {
     setIsSubscribed(!isSubscribed)
   }, [isSubscribed])
 
-  const token = new URLSearchParams(window.location.search).get('liveKitToken') as string
+  const token = ''
+  // const token = new URLSearchParams(window.location.search).get('liveKitToken') as string
 
   return (
     <div className={styles.meeting}>
