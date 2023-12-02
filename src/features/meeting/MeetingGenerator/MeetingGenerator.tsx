@@ -48,16 +48,14 @@ export const MeetingGenerator: FC = ({}) => {
     timer()
   })
 
-  useEffect(() => {
-    if (increment < 1) return
-    const nextMessage = chatList[messagesList.length]
-    if (!nextMessage || messagesList.some((msg) => msg.id === nextMessage.id)) {
-      return
-    }
-    setMessagesList((prev) => [...prev, nextMessage])
-  }, [increment])
+  // useEffect(() => {
+  //   if (increment < 1) return
+  //   const nextMessage = chatList[messagesList.length]
+  //   if (!nextMessage || messagesList.some((msg) => msg.id === nextMessage.id)) {
+  //     return
+  //   }
+  //   setMessagesList((prev) => [...prev, nextMessage])
+  // }, [increment])
 
-  return (
-    <MeetingLayout participants={participants} messages={messagesList} followers={385} likes={42} />
-  )
+  return <MeetingLayout />
 }

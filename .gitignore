@@ -19,6 +19,10 @@
 .DS_Store
 *.pem
 
+# dfx temporary files
+.dfx/
+canister_ids.json
+
 # debug
 npm-debug.log*
 yarn-debug.log*

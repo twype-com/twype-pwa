@@ -13,32 +13,7 @@ export default function Home() {
   return (
     <Feed>
       {fakeContent.map((item) => (
-        <PostPreview
-          key={item}
-          title="Name of the stream"
-          tags={[
-            'crypto',
-            'bitcoin',
-            'ethereum',
-            'react',
-            'javascript',
-            'typescript',
-            'nextjs',
-            'css',
-            'html',
-            'scss',
-            'sass',
-            'less',
-            'nodejs',
-            'express',
-            'mongodb',
-            'postgresql',
-            'mysql',
-            'redis',
-            'webpack',
-          ]}
-          user={{ nickName: 'nickName', photoUrl: 'https://picsum.photos/60' }}
-        />
+        <PostPreview key={item} title="Name of the stream" />
       ))}
     </Feed>
   )
