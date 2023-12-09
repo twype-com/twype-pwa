@@ -29,6 +29,7 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.48.2",
     "react-use": "^17.4.2",
+    "semver": "^7.5.4",
     "zod": "^3.22.4",
     "zustand": "^4.4.7"
   },
@@ -41,5 +42,10 @@
     "eslint-config-next": "14.0.4",
     "sass": "^1.69.5",
     "typescript": "^5.3.3"
-  }
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "check-node-version": "node check-node-version.js",
+  "preinstall": "pnpm run check-node-version"
 }
