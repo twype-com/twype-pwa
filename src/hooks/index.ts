@@ -1,0 +1,1 @@
+export { useNfid } from './useNfId'
