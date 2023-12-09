@@ -1,12 +1,13 @@
-'use client'
-import { FC, useEffect } from 'react'
+import { Metadata } from 'next'
 
-type CreateRoomFormProps = {}
-
-export const JoinRoomPage: FC<CreateRoomFormProps> = () => {
-  useEffect(() => {
-    new Promise((resolve) => setTimeout(resolve, 20000)).then(() => {})
-  }, [])
+export const metadata: Metadata = {
+  title: 'Twype Join room',
+  description: '...Description',
+}
+export default function JoinRoomPage() {
+  // useEffect(() => {
+  //   new Promise((resolve) => setTimeout(resolve, 20000)).then(() => {})
+  // }, [])
 
   return (
     <div>
@@ -14,5 +15,3 @@ export const JoinRoomPage: FC<CreateRoomFormProps> = () => {
     </div>
   )
 }
-
-export default JoinRoomPage

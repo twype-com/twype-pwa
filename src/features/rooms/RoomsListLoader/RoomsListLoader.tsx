@@ -34,42 +34,45 @@ export const RoomsListLoader: FC<RoomsListLoaderProps> = () => {
     },
   })
 
-  const joinRoom = useCallback((item: any) => {
-    return async () => {
-      const room = await axios
-        .post<
-          never,
-          AxiosResponse<{
-            room: {
-              id: number
-              sid: string
-              name: string
-            }
-            participant: {
-              id: number
-              roomId: number
-              token: string
-              userId: string
-            }
-          }>
-        >(
-          `https://twype-back-dgn2x.ondigitalocean.app/public/room/join`,
-          {
-            roomId: item.id,
-          },
-          {
-            headers: {
-              Authorization: token as string,
+  const joinRoom = useCallback(
+    (item: any) => {
+      return async () => {
+        const room = await axios
+          .post<
+            never,
+            AxiosResponse<{
+              room: {
+                id: number
+                sid: string
+                name: string
+              }
+              participant: {
+                id: number
+                roomId: number
+                token: string
+                userId: string
+              }
+            }>
+          >(
+            `https://twype-back-dgn2x.ondigitalocean.app/public/room/join`,
+            {
+              roomId: item.id,
             },
-          },
-        )
-        .then((response) => response.data)
+            {
+              headers: {
+                Authorization: token as string,
+              },
+            },
+          )
+          .then((response) => response.data)
 
-      push(
-        `/rooms/${room.room.id}/call?liveKitToken=${room.participant.token}&sid=${room.room.sid}`,
-      )
-    }
-  }, [])
+        push(
+          `/rooms/${room.room.id}/call?liveKitToken=${room.participant.token}&sid=${room.room.sid}`,
+        )
+      }
+    },
+    [push, token],
+  )
 
   return (
     <Article title="Rooms page" buttonUrl="/rooms/create" buttonText="Create new room" isProtected>
