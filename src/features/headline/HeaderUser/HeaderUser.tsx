@@ -15,6 +15,7 @@ type HeaderUserProps = {
 export const HeaderUser: FC<HeaderUserProps> = ({ className }) => {
   const address = useUserStore((state) => state.walletAddress)
   const login = useUserStore((state) => state.updateWalletAddress)
+  const logout = useUserStore((state) => state.logout)
 
   const menu: UserMenuItem[] = [
     {
@@ -64,7 +65,7 @@ export const HeaderUser: FC<HeaderUserProps> = ({ className }) => {
 
           <DropdownMenu.Separator className={styles.DropdownMenuSeparator} />
 
-          <DropdownMenu.Item className={styles.DropdownMenuItem} onClick={() => login(null)}>
+          <DropdownMenu.Item className={styles.DropdownMenuItem} onClick={() => logout()}>
             Log out <div className={styles.RightSlot}>⌘+E</div>
           </DropdownMenu.Item>
 
