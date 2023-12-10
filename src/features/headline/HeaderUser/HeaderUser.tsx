@@ -1,10 +1,11 @@
 'use client'
 import { FC } from 'react'
-import { Avatar, Button } from '@radix-ui/themes'
+import { Button } from '@radix-ui/themes'
 import { Envelope } from '@phosphor-icons/react'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import useUserStore from '@/features/user/store'
 import { TMP_WALLET_ADDRESS } from '@/features/user/constants'
+import { Avatar } from '@/components/Avatar/Avatar'
 import { UserMenuItem } from '../types'
 import styles from './HeaderUser.module.scss'
 
@@ -46,12 +47,9 @@ export const HeaderUser: FC<HeaderUserProps> = ({ className }) => {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
-        <Avatar
-          size="3"
-          src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
-          fallback="AT"
-          radius="full"
-        />
+        <div className={styles.avatar}>
+          <Avatar address={address} />
+        </div>
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Portal>

@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import cn from 'classnames'
-import { Avatar } from '@radix-ui/themes'
+import { Avatar } from '@/components/Avatar/Avatar'
 import { ProfileUserMain } from '../ProfileUserMain/ProfileUserMain'
 import { ProfileUserActions } from '../ProfileUserActions/ProfileUserActions'
 import { UserProfile } from '../types'
@@ -14,7 +14,12 @@ type ProfileUserProps = {
 export const ProfileUser: FC<ProfileUserProps> = ({ className, profile }) => {
   return (
     <section className={cn(styles.profile, className)}>
-      <Avatar size="8" src={profile.photoUrl} fallback="AT" radius="full" />
+      <Avatar
+        address={'demo-address'}
+        photoUrl={profile.photoUrl}
+        userName={profile.nickName}
+        className={styles.avatar}
+      />
       <ProfileUserMain profile={profile} />
       <ProfileUserActions />
     </section>
