@@ -2,6 +2,23 @@
   display: flex;
 }
 
+.link,
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 0 var(--space-base);
+  background: none;
+  color: var(--color-text-primary);
+  font-size: var(--font-small);
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .DropdownMenuContent,
 .DropdownMenuSubContent {
   min-width: 220px;
@@ -38,7 +55,7 @@
   align-items: center;
   position: relative;
   height: var(--space-large);
-  padding: 0 var(--space-base);
+  padding: 0;
   color: var(--color-text-primary);
   font-size: var(--font-small);
   line-height: 1;

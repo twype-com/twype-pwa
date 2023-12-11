@@ -4,13 +4,15 @@ import { Article } from '@/components/Article/Article'
 import { ProfileUser } from '../ProfileUser/ProfileUser'
 import { ProfileDetails } from '../ProfileDetails/ProfileDetails'
 import { UserProfile } from '../types'
+import { shortenAddress } from '@/utils/common'
 
-type ProfileLoaderProps = {}
+type ProfileLoaderProps = {
+  address: string
+}
 
-export const ProfileLoader: FC<ProfileLoaderProps> = () => {
+export const ProfileLoader: FC<ProfileLoaderProps> = ({ address }) => {
   const fakeUser: UserProfile = {
-    fullName: 'Jack Locks',
-    nickName: 'jack.locks',
+    nickName: shortenAddress(address),
     links: [
       { title: 'YouTube', link: 'https://youtube.com/' },
       { title: 'Twitter', link: 'https://twitter.com/' },
