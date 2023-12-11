@@ -13,3 +13,11 @@ export type UserProfile = {
   subscriptions: number
   isOnline: boolean
 }
+
+export type TradeRoom = {
+  id: string
+  name: string
+  participants: number
+  price: number
+  own: number
+}
