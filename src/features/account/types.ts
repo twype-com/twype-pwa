@@ -4,7 +4,7 @@ export type ProfileLink = {
 }
 
 export type UserProfile = {
-  fullName: string
+  fullName?: string
   nickName: string
   description?: string
   links?: ProfileLink[]
