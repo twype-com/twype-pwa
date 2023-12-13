@@ -1,12 +1,13 @@
 import { FC, useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
 import cn from 'classnames'
-import { Badge, Button, Dialog } from '@radix-ui/themes'
-import { Link as LinksIcon } from '@phosphor-icons/react'
+import { Badge, Button, Callout, Dialog } from '@radix-ui/themes'
+import { Info, Link as LinksIcon } from '@phosphor-icons/react'
 import { TradeRoom, UserProfile } from '@/features/account/types'
 import rooms from '@/mocks/user-rooms.json'
-import styles from './UserRooms.module.scss'
+import { TradingModal } from '@/features/account//TradingModal/TradingModal'
 import Input from '@/components/Input/Input'
+import styles from './UserRooms.module.scss'
 
 type UserRoomsProps = {
   className?: string
@@ -28,14 +29,24 @@ export const UserRooms: FC<UserRoomsProps> = ({ className }) => {
     }
   }, [isDialogOpen])
 
-  const handleSell = useCallback((room: TradeRoom) => {
+  const startSell = useCallback((room: TradeRoom) => {
     setActiveRoomSell(room)
     setIsDialogOpen(true)
   }, [])
 
-  const handleBuy = useCallback((room: TradeRoom) => {
+  const startBuy = useCallback((room: TradeRoom) => {
     setActiveRoomBuy(room)
     setIsDialogOpen(true)
+  }, [])
+
+  const handleSell = useCallback((num: number) => {
+    console.log('🚀 ~ handleSell ~ num:', num)
+    setIsDialogOpen(false)
+  }, [])
+
+  const handleBuy = useCallback((num: number) => {
+    console.log('🚀 ~ handleBuy ~ num:', num)
+    setIsDialogOpen(false)
   }, [])
 
   return (
@@ -62,13 +73,13 @@ export const UserRooms: FC<UserRoomsProps> = ({ className }) => {
                 radius="full"
                 size="2"
                 disabled={!room.own}
-                onClick={() => handleSell(room)}
+                onClick={() => startSell(room)}
               >
                 Sell
               </Button>
             </div>
             <div className={styles.buy}>
-              <Button color="teal" radius="full" size="2" onClick={() => handleBuy(room)}>
+              <Button color="teal" radius="full" size="2" onClick={() => startBuy(room)}>
                 Buy
               </Button>
             </div>
@@ -76,43 +87,15 @@ export const UserRooms: FC<UserRoomsProps> = ({ className }) => {
         ))}
       </ul>
 
-      <Dialog.Root open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <Dialog.Content style={{ maxWidth: 320 }}>
-          <Dialog.Title>Trade tickets</Dialog.Title>
-          {activeRoomSell && (
-            <Dialog.Description size="2" mb="4">
-              Sell <Input value={'4'} className={styles.input} /> tickets for 30 ICP
-            </Dialog.Description>
-          )}
-          {activeRoomBuy && (
-            <Dialog.Description size="2" mb="4">
-              Buy <Input value={'2'} className={styles.input} /> tickets fot 26 ICP
-            </Dialog.Description>
-          )}
-          {/* CONTENT */}
-          <footer className={styles.footer}>
-            <Dialog.Close>
-              <Button variant="soft" color="gray" radius="full">
-                Cancel
-              </Button>
-            </Dialog.Close>
-            {activeRoomSell && (
-              <Dialog.Close>
-                <Button color="pink" radius="full">
-                  Sell
-                </Button>
-              </Dialog.Close>
-            )}
-            {activeRoomBuy && (
-              <Dialog.Close>
-                <Button color="teal" radius="full">
-                  Buy
-                </Button>
-              </Dialog.Close>
-            )}
-          </footer>
-        </Dialog.Content>
-      </Dialog.Root>
+      <TradingModal
+        isOpen={isDialogOpen}
+        room={activeRoomBuy || activeRoomSell}
+        tradeType={activeRoomSell ? 'sell' : 'buy'}
+        price={45}
+        onSell={handleSell}
+        onBuy={handleBuy}
+        onOpenChange={setIsDialogOpen}
+      />
     </section>
   )
 }
