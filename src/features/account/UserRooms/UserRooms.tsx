@@ -1,12 +1,9 @@
 import { FC, useCallback, useEffect, useState } from 'react'
-import Link from 'next/link'
 import cn from 'classnames'
-import { Badge, Button, Callout, Dialog } from '@radix-ui/themes'
-import { Info, Link as LinksIcon } from '@phosphor-icons/react'
-import { TradeRoom, UserProfile } from '@/features/account/types'
+import { Button } from '@radix-ui/themes'
+import { TradeRoom } from '@/features/account/types'
 import rooms from '@/mocks/user-rooms.json'
-import { TradingModal } from '@/features/account//TradingModal/TradingModal'
-import Input from '@/components/Input/Input'
+import { TradingModal } from '@/features/trading/TradingModal/TradingModal'
 import styles from './UserRooms.module.scss'
 
 type UserRoomsProps = {
