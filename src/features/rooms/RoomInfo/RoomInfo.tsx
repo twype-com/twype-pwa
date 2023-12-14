@@ -53,6 +53,7 @@ export const RoomInfo: FC<RoomInfoProps> = () => {
       <p>
         <i>The place for nice description and actions</i>
       </p>
+      <p>Current ticket price: {room.price}</p>
       <p>493 users in the room</p>
 
       <div>
@@ -69,7 +70,7 @@ export const RoomInfo: FC<RoomInfoProps> = () => {
         isOpen={isDialogOpen}
         room={activeRoomBuy || activeRoomSell}
         tradeType={activeRoomSell ? 'sell' : 'buy'}
-        price={45}
+        price={room.price}
         onSell={handleSell}
         onBuy={handleBuy}
         onOpenChange={setIsDialogOpen}
