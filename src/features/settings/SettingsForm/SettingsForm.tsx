@@ -1,49 +1,16 @@
 'use client'
-import { FC, useCallback, useMemo, useState } from 'react'
+import { FC } from 'react'
 import cn from 'classnames'
 import * as Form from '@radix-ui/react-form'
 import { Button, IconButton, Switch } from '@radix-ui/themes'
-// import Input from '@/components/Input/Input'
-import formStyles from './style.module.scss'
 import { CaretDown } from '@phosphor-icons/react/dist/ssr/CaretDown'
+import formStyles from './style.module.scss'
 
 type SettingsFormProps = {
   className?: string
 }
 
 export const SettingsForm: FC<SettingsFormProps> = ({ className }) => {
-  // const [isLoading, setIsLoading] = useState(false)
-  // const [roomName, setRoomName] = useState<string>('')
-  // const [roomCode, setRoomCode] = useState<string>('')
-  // const [roomTimeout, setRoomTimeout] = useState<string>('')
-  // const [maxParticipants, setMaxParticipants] = useState<string>('')
-
-  // const generateRoomSlug = useCallback(() => {
-  //   setIsLoading(true)
-  //   const code = customAlphabet(nolookalikes.toLocaleLowerCase(), 4)
-  //   setTimeout(() => {
-  //     setRoomCode(code())
-  //     setIsLoading(false)
-  //   }, 300)
-  // }, [])
-
-  // useEffectOnce(() => {
-  //   generateRoomSlug()
-  // })
-
-  // const canSubmit = useMemo(() => {
-  //   return !!roomName && !!roomCode
-  // }, [roomCode, roomName])
-
-  // const handleSubmit = (event: any) => {
-  //   event.preventDefault()
-  //   onSubmit({
-  //     name: roomName,
-  //     emptyTimeout: roomTimeout ? Number(roomTimeout) : undefined,
-  //     maxParticipants: maxParticipants ? Number(maxParticipants) : undefined,
-  //   })
-  // }
-
   return (
     <div className={cn(className)}>
       <Form.Root>
@@ -137,16 +104,11 @@ export const SettingsForm: FC<SettingsFormProps> = ({ className }) => {
           </Form.Field>
         </div>
 
-        {/* <div className={formStyles.row}>
+        <div className={formStyles.row}>
           <Form.Submit asChild>
-            <Button size={'3'}>
-              Save
-            </Button>
-            <Button disabled={isLoading || !canSubmit} onClick={(event) => handleSubmit(event)}>
-              Save
-            </Button>
+            <Button size={'3'}>Save</Button>
           </Form.Submit>
-        </div> */}
+        </div>
       </Form.Root>
     </div>
   )

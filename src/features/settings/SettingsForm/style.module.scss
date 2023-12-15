@@ -28,21 +28,10 @@
 
 .field {
   flex: 1;
-
-  // @include device(mobile) {
-  //   & + & {
-  //     margin-block-start: var(--space-big);
-  //   }
-  // }
-
   display: flex;
 }
 
 .side {
-  // @include device(mobile) {
-  //   margin-block-end: var(--space-tiny);
-  // }
-
   flex: 0 0 var(--side-width);
   padding-inline-end: var(--space-small);
 }

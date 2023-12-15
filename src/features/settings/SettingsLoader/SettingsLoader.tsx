@@ -1,7 +1,5 @@
 'use client'
-import { FC, useState } from 'react'
-import { NewRoom } from '@/features/rooms/types'
-import { CreateRoomSender } from '@/features/rooms/CreateRoomSender/CreateRoomSender'
+import { FC } from 'react'
 import { Article } from '@/components/Article/Article'
 import { SettingsForm } from '../SettingsForm/SettingsForm'
 
