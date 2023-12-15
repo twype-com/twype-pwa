@@ -9,10 +9,9 @@ type FollowingAccountsProps = {
 }
 
 export const FollowingAccounts: FC<FollowingAccountsProps> = ({ className }) => {
-  const list = Array.from({ length: 1 }, (_, i) => i + 1).map((item) => ({
+  const list = Array.from({ length: 5 }, (_, i) => i + 1).map((item) => ({
     nickName: `nickName${item}`,
     fullName: `fullName${item}`,
-    photoUrl: `https://source.unsplash.com/random/120×120/?avatar${item}`,
   }))
 
   return (
@@ -24,7 +23,6 @@ export const FollowingAccounts: FC<FollowingAccountsProps> = ({ className }) => 
             <User
               nickName={account.nickName}
               fullName={account.fullName}
-              photoUrl={account.photoUrl}
               to={`/user/${account.nickName}`}
             />
           </li>

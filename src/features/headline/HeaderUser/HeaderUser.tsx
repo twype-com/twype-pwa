@@ -1,10 +1,11 @@
 'use client'
 import { FC } from 'react'
-import { Avatar, Button } from '@radix-ui/themes'
-import { Envelope } from '@phosphor-icons/react'
+import Link from 'next/link'
+import { Button } from '@radix-ui/themes'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import useUserStore from '@/features/user/store'
 import { TMP_WALLET_ADDRESS } from '@/features/user/constants'
+import { Avatar } from '@/components/Avatar/Avatar'
 import { UserMenuItem } from '../types'
 import styles from './HeaderUser.module.scss'
 
@@ -15,23 +16,22 @@ type HeaderUserProps = {
 export const HeaderUser: FC<HeaderUserProps> = ({ className }) => {
   const address = useUserStore((state) => state.walletAddress)
   const login = useUserStore((state) => state.updateWalletAddress)
+  const logout = useUserStore((state) => state.logout)
 
   const menu: UserMenuItem[] = [
     {
       text: 'View profile',
-      slug: '#profile',
-      icon: <Envelope />,
+      href: `/users/${address}`,
+      slug: 'my-profile',
     },
-    {
-      text: 'Favorites',
-      slug: '#favorites',
-      icon: <Envelope />,
-    },
-    {
-      text: 'Settings',
-      slug: '#settings',
-      icon: <Envelope />,
-    },
+    // {
+    //   text: 'Favorites',
+    //   slug: 'favorites',
+    // },
+    // {
+    //   text: 'Settings',
+    //   slug: 'settings',
+    // },
   ]
 
   if (!address) {
@@ -45,27 +45,35 @@ export const HeaderUser: FC<HeaderUserProps> = ({ className }) => {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
-        <Avatar
-          size="3"
-          src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
-          fallback="AT"
-          radius="full"
-        />
+        <div className={styles.avatar}>
+          <Avatar address={address} />
+        </div>
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Portal>
         <DropdownMenu.Content className={styles.DropdownMenuContent} sideOffset={5}>
           {menu.map((item) => (
             <DropdownMenu.Item className={styles.DropdownMenuItem} key={item.slug}>
-              {item.text}
-              {item.rightSlot && <div className={styles.RightSlot}>{item.rightSlot}</div>}
+              {item.href ? (
+                <Link href={item.href} className={styles.link}>
+                  {item.text}
+                  {item.rightSlot && <span className={styles.RightSlot}>{item.rightSlot}</span>}
+                </Link>
+              ) : (
+                <button className={styles.button}>
+                  {item.text}
+                  {item.rightSlot && <span className={styles.RightSlot}>{item.rightSlot}</span>}
+                </button>
+              )}
             </DropdownMenu.Item>
           ))}
 
           <DropdownMenu.Separator className={styles.DropdownMenuSeparator} />
 
-          <DropdownMenu.Item className={styles.DropdownMenuItem} onClick={() => login(null)}>
-            Log out <div className={styles.RightSlot}>⌘+E</div>
+          <DropdownMenu.Item className={styles.DropdownMenuItem}>
+            <button className={styles.button} onClick={() => logout()}>
+              Log out <div className={styles.RightSlot}>⌘+E</div>
+            </button>
           </DropdownMenu.Item>
 
           <DropdownMenu.Arrow className={styles.DropdownMenuArrow} />

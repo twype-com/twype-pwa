@@ -11,7 +11,9 @@ type PostMediaProps = {
 export const PostMedia: FC<PostMediaProps> = ({ cover = '/images/jeex.png', isOnline }) => {
   return (
     <AspectRatio ratio={8 / 4} className={styles.media}>
-      <img src={cover} alt="" className={styles.cover} />
+      <picture>
+        <img src={cover} alt="" className={styles.cover} />
+      </picture>
       {isOnline && <div className={styles.online} />}
     </AspectRatio>
   )
