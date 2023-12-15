@@ -10,6 +10,7 @@
     "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
+    "@dfinity/auth-client": "^0.20.2",
     "@livekit/components-core": "^0.8.2",
     "@livekit/components-react": "^1.4.2",
     "@livekit/components-styles": "^1.0.7",

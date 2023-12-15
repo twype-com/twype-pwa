@@ -8,6 +8,7 @@ import { TMP_WALLET_ADDRESS } from '@/features/user/constants'
 import { Avatar } from '@/components/Avatar/Avatar'
 import { UserMenuItem } from '../types'
 import styles from './HeaderUser.module.scss'
+import { useInternetIdentity } from '@/hooks/useInternetIdentity'
 
 type HeaderUserProps = {
   className?: string
@@ -15,13 +16,14 @@ type HeaderUserProps = {
 
 export const HeaderUser: FC<HeaderUserProps> = ({ className }) => {
   const address = useUserStore((state) => state.walletAddress)
-  const login = useUserStore((state) => state.updateWalletAddress)
-  const logout = useUserStore((state) => state.logout)
+  // const login = useUserStore((state) => state.updateWalletAddress)
+  // const logout = useUserStore((state) => state.logout)
+  const { login, principal } = useInternetIdentity()
 
   const menu: UserMenuItem[] = [
     {
       text: 'View profile',
-      href: `/users/${address}`,
+      href: `/users/${principal?.toString()}`,
       slug: 'my-profile',
     },
     // {
@@ -34,9 +36,9 @@ export const HeaderUser: FC<HeaderUserProps> = ({ className }) => {
     // },
   ]
 
-  if (!address) {
+  if (!principal?.toString()) {
     return (
-      <Button onClick={() => login(TMP_WALLET_ADDRESS)} variant="outline">
+      <Button onClick={() => login && login()} variant="outline">
         Connect wallet
       </Button>
     )
@@ -46,7 +48,7 @@ export const HeaderUser: FC<HeaderUserProps> = ({ className }) => {
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
         <div className={styles.avatar}>
-          <Avatar address={address} />
+          <Avatar address={principal.toString()} />
         </div>
       </DropdownMenu.Trigger>
 
